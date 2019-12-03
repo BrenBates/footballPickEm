@@ -12,6 +12,8 @@ var $exampleList = $("#example-list");
 var loggedInLinks = document.querySelectorAll('.logged-in');
 var loggedOutLinks= document.querySelectorAll('.logged-out');
 
+var $b2 = $("#b2");
+
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -75,8 +77,10 @@ var handleFormSubmit = function(event) {
 
   var example = {
     text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
+    description: $exampleDescription.val().trim(),
+    test: $b2.val().trim()
   };
+  console.log("test should be " + $b2.val().trim())
 
   if (!(example.text && example.description)) {
     alert("You must enter an example text and description!");
@@ -89,6 +93,7 @@ var handleFormSubmit = function(event) {
 
   $exampleText.val("");
   $exampleDescription.val("");
+  $b2.val("");
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
