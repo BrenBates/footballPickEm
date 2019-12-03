@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 var db = require("../models");
 var axios = require("axios");
 
@@ -25,13 +26,15 @@ module.exports = function(app) {
   // Seed db with JSON data from API
   app.post("/api/games", function(req, res) {
     var queryUrl = "https://feeds.nfl.com/feeds-rs/scores.json";
-
     axios
       .get(queryUrl)
       .then(function(response) {
-        for (var i = 0; i < response.gameScores.length; i++) {
-          var gameSchedule = response[i].gameSchedule;
-          var scores = response[i].scores;
+      
+        
+        for (var i = 0; i < response.data.gameScores.length; i++) {
+          var gameSchedule = response.data.gameScores[i].gameSchedule;
+          var scores = response.data.gameScores[i].scores;
+          
           var tempObj = {
             gameID: gameSchedule.gameId,
             homeTeam: gameSchedule.homeTeam.fullName,
@@ -47,9 +50,10 @@ module.exports = function(app) {
             forthQsAway: scores.awayTeamScore.pointQ4,
             finalScoreAway: scores.awayTeamScore.pointTotal
           };
+          console.log(tempObj);
+          db.games.create(tempObj);
         }
-        console.log("This is the obj: " + tempObj);
-        db.games.create(tempObj);
+  
       })
       .catch(function(error) {
         if (error.response) {

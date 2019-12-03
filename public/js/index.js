@@ -198,9 +198,9 @@ var handleViewTeams = function(event) {
 }
 
 handleViewGames = function(event) {
-  console.log("above");
+  
   $.post("/api/games");
-  console.log("below");
+ 
 }
 
 
