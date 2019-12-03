@@ -29,29 +29,33 @@ module.exports = function(app) {
     axios
       .get(queryUrl)
       .then(function(response) {
-      
         
-        for (var i = 0; i < response.data.gameScores.length; i++) {
-          var gameSchedule = response.data.gameScores[i].gameSchedule;
-          var scores = response.data.gameScores[i].scores;
+        
+        // console.log(response.data.gameScores[0].gameSchedule.gameId);
+  
+        for (let i = 0; i < response.data.gameScores.length; i++) {
+          //let gameSchedule = response.data.gameScores[i].gameSchedule;
+          // let scores = response.data.gameScores[i].scores;
+        
           
+
           var tempObj = {
-            gameID: gameSchedule.gameId,
-            homeTeam: gameSchedule.homeTeam.fullName,
-            firstQsHome: scores.homeTeamScore.pointQ1,
-            secondQsHome: scores.homeTeamScore.pointQ2,
-            thirdQsHome: scores.homeTeamScore.pointQ3,
-            forthQsHome: scores.homeTeamScore.pointQ4,
-            finalScoreHome: scores.homeTeamScore.pointTotal,
-            awayTeam: gameSchedule.awayTeam.fullName,
-            firstQsAway: scores.awayTeamScore.pointQ1,
-            secondQsAway: scores.awayTeamScore.pointQ2,
-            thirdQsAway: scores.awayTeamScore.pointQ3,
-            forthQsAway: scores.awayTeamScore.pointQ4,
-            finalScoreAway: scores.awayTeamScore.pointTotal
+            gameID: response.data.gameScores[i].gameSchedule.gameId,
+            homeTeam: response.data.gameScores[i].gameSchedule.homeTeam.fullName,
+            firstQsHome: response.data.gameScores[i].score.homeTeamScore.pointQ1,
+            secondQsHome: response.data.gameScores[i].score.homeTeamScore.pointQ2,
+            thirdQsHome: response.data.gameScores[i].score.homeTeamScore.pointQ3,
+            forthQsHome: response.data.gameScores[i].score.homeTeamScore.pointQ4,
+            finalScoreHome: response.data.gameScores[i].score.homeTeamScore.pointTotal,
+            awayTeam: response.data.gameScores[i].gameSchedule.visitorTeam.fullName,
+            firstQsAway: response.data.gameScores[i].score.visitorTeamScore.pointQ1,
+            secondQsAway: response.data.gameScores[i].score.visitorTeamScore.pointQ2,
+            thirdQsAway: response.data.gameScores[i].score.visitorTeamScore.pointQ3,
+            forthQsAway: response.data.gameScores[i].score.visitorTeamScore.pointQ4,
+            finalScoreAway: response.data.gameScores[i].score.visitorTeamScore.pointTotal
           };
           console.log(tempObj);
-          db.games.create(tempObj);
+           db.games.create(tempObj);
         }
   
       })
