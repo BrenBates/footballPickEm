@@ -12,11 +12,13 @@ module.exports = function(app) {
   });
 
   app.get("/viewgames", function(req, res) {
+
     res.render("viewgames");;
   });
 
   app.get("/viewteams", function(req, res) {
     res.render("viewteams");;
+
   });
 
   // Load example page and pass in an example by id
