@@ -1,4 +1,5 @@
 var db = require("../models");
+var axios = require("axios");
 
 module.exports = function(app) {
   // Get all examples
@@ -9,15 +10,6 @@ module.exports = function(app) {
   });
 
 
-<<<<<<< Updated upstream
-  // Create a new example
-  app.post("/api/examples", function(req, res) {
-    db.Example.create(req.body).then(function(dbExample) {
-      res.json(dbExample);
-    }).catch(function(err) {
-      res.json(err);
-    });
-=======
   //   for (var i = 0; i < games.length; i++) {
   //     if (chosen === games[i].routeName) {
   //       return res.json(games[i]);
@@ -104,7 +96,7 @@ module.exports = function(app) {
         }
         res.status(500);
       });
->>>>>>> Stashed changes
+
   });
 
 
