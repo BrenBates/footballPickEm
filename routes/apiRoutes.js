@@ -26,15 +26,11 @@ module.exports = function(app) {
       .then(function(response) {
         
         
-        // console.log(response.data.gameScores[0].gameSchedule.gameId);
   
         for (let i = 0; i < response.data.gameScores.length; i++) {
-          //let gameSchedule = response.data.gameScores[i].gameSchedule;
-          // let scores = response.data.gameScores[i].scores;
-          console.log('hello')
-          
+                    
           let currentWeek = response.data.week;
-          console.log('this is the current week', currentWeek)
+          
 
           if(response.data.gameScores[i].score === null){
             var tempObj = {
@@ -53,10 +49,10 @@ module.exports = function(app) {
               thirdQsAway: null,
               forthQsAway: null,
               finalScoreAway: null,
-              gameStatus: 'active'
+              gameStatus: 'inactive'
 
             }
-            console.log(tempObj);
+
           } else {
 
           var tempObj = {
@@ -75,19 +71,41 @@ module.exports = function(app) {
             thirdQsAway: response.data.gameScores[i].score.visitorTeamScore.pointQ3,
             forthQsAway: response.data.gameScores[i].score.visitorTeamScore.pointQ4,
             finalScoreAway: response.data.gameScores[i].score.visitorTeamScore.pointTotal,
-            gameStatus: 'active'
+            gameStatus: 'inactive'
           };
         }
-          console.log(tempObj);
-          db.games.destroy({
+          
+        
+
+    //Run a find or create based on gameId to add the game to the database if it doesn't exist. 
+  db.games.findOrCreate({where: {gameId: response.data.gameScores[i].gameSchedule.gameId }, defaults: tempObj})
+  .spread((games, created) => {
+    console.log(games.get({
+      plain: true
+    }))
+    console.log(created)
+  })
+
+        }
+
+          // Update all of the games to be inactive
+          db.games.update({
+            gameStatus: 'inactive'
+          }, {
             where: {
               gameStatus: 'active'
             }
           })
 
-          db.games.create(tempObj);
-
-        }
+          // Now that they are all inactive, update the current week games to have an active game status
+          db.games.update({
+            gameStatus: 'active'
+          }, {
+            where: {
+              week: response.data.week
+            }
+          })
+       
   
       })
       .catch(function(error) {

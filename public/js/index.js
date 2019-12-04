@@ -198,7 +198,8 @@ var handleViewTeams = function(event) {
 }
 
 handleViewGames = function(event) {
-  document.location.href = '/viewgames'
+  $.post("/api/games")
+  
 }
 
 
