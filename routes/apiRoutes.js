@@ -2,12 +2,20 @@
 var db = require("../models");
 var axios = require("axios");
 module.exports = function(app) {
-  // Get all examples
+  // Get all matchup examples
   app.get("/api/games", function(req, res) {
     db.games.findAll({}).then(function(dbGames) {
       res.json(dbGames);
     });
   });
+
+   // Get all usergame examples
+   app.get("/api/usergames", function(req, res) {
+    db.usergames.findAll({}).then(function(dbUserGames) {
+      res.json(dbUserGames);
+    });
+  });
+
   // Route to specific game that is chosen //
   // app.get("/games/:game", function(req, res) {
   //   var chosen = req.params.games;
@@ -67,10 +75,10 @@ module.exports = function(app) {
     //Run a find or create based on gameId to add the game to the database if it doesn't exist. 
   db.games.findOrCreate({where: {gameId: response.data.gameScores[i].gameSchedule.gameId }, defaults: tempObj})
   .spread((games, created) => {
-    console.log(games.get({
-      plain: true
-    }))
-    console.log(created)
+    // console.log(games.get({
+    //   plain: true
+    // }))
+    // console.log(created)
   })
         }
           // Update all of the games to be inactive
