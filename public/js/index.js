@@ -200,6 +200,7 @@ var handleViewTeams = function(event) {
 handleViewGames = function(event) {
   
   $.post("/api/games");
+  document.location.href = '/viewteams'
  
 }
 

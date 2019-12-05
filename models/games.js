@@ -8,6 +8,9 @@ module.exports = function(sequelize, DataTypes) {
     gameId: {
       type: DataTypes.INTEGER
     },
+    week: {
+      type: DataTypes.INTEGER
+    },
     homeTeam: {
       type: DataTypes.STRING
     },
@@ -43,6 +46,9 @@ module.exports = function(sequelize, DataTypes) {
     },
     finalScoreAway: {
       type: DataTypes.INTEGER
+    },
+    gameStatus: {
+      type: DataTypes.STRING
     },
     gameClock: {
       type: DataTypes.STRING
