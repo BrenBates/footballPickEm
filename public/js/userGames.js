@@ -50,6 +50,7 @@ $(document).ready(function() {
         var newUserWeekBody = $("<h5>");
         var userSelectBtn = $("<button>");
         userSelectBtn.addClass("select btn btn-default");
+        userSelectBtn.attr('userGamesId',userGames.userGameId);
         newUserGameCardHeading.text(userGames.gameId);
         newUserHomeTeamBody.text("Home Team: " + userGames.homeTeam);
         newUserAwayTeamBody.text("Away Team: " +userGames.awayTeam);
