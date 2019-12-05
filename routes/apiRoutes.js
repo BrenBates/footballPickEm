@@ -3,7 +3,7 @@ var db = require("../models");
 var axios = require("axios");
 module.exports = function(app) {
   // Get all examples
-  app.get("/games", function(req, res) {
+  app.get("/api/games", function(req, res) {
     db.games.findAll({}).then(function(dbGames) {
       res.json(dbGames);
     });
@@ -19,7 +19,6 @@ module.exports = function(app) {
   //   }
   //   return res.send("No game found");
   // });
-
   // Seed db with JSON data from API
   app.post("/api/games", function(req, res) {
     var queryUrl = "https://feeds.nfl.com/feeds-rs/scores.json";
@@ -30,18 +29,6 @@ module.exports = function(app) {
           let currentWeek = response.data.week;
           if(response.data.gameScores[i].score === null){
             var tempObj = {
-
-        
-        
-  
-        for (let i = 0; i < response.data.gameScores.length; i++) {
-                    
-          let currentWeek = response.data.week;
-          
-
-          if(response.data.gameScores[i].score === null){
-            var tempObj = {
-
               gameId: response.data.gameScores[i].gameSchedule.gameId,
               week: response.data.week,
               homeTeam: response.data.gameScores[i].gameSchedule.homeTeam.fullName,
@@ -121,93 +108,6 @@ module.exports = function(app) {
           //let gameSchedule = response.data.gameScores[i].gameSchedule;
           // let scores = response.data.gameScores[i].scores;
           var tempObj = {
-
-
-            }
-
-          } else {
-
-          var tempObj = {
-          
-            gameId: response.data.gameScores[i].gameSchedule.gameId,
-            week: response.data.week,
-            homeTeam: response.data.gameScores[i].gameSchedule.homeTeam.fullName,
-            firstQsHome: response.data.gameScores[i].score.homeTeamScore.pointQ1,
-            secondQsHome: response.data.gameScores[i].score.homeTeamScore.pointQ2,
-            thirdQsHome: response.data.gameScores[i].score.homeTeamScore.pointQ3,
-            forthQsHome: response.data.gameScores[i].score.homeTeamScore.pointQ4,
-            finalScoreHome: response.data.gameScores[i].score.homeTeamScore.pointTotal,
-            awayTeam: response.data.gameScores[i].gameSchedule.visitorTeam.fullName,
-            firstQsAway: response.data.gameScores[i].score.visitorTeamScore.pointQ1,
-            secondQsAway: response.data.gameScores[i].score.visitorTeamScore.pointQ2,
-            thirdQsAway: response.data.gameScores[i].score.visitorTeamScore.pointQ3,
-            forthQsAway: response.data.gameScores[i].score.visitorTeamScore.pointQ4,
-            finalScoreAway: response.data.gameScores[i].score.visitorTeamScore.pointTotal,
-            gameStatus: 'inactive'
-          };
-        }
-          
-        
-
-    //Run a find or create based on gameId to add the game to the database if it doesn't exist. 
-  db.games.findOrCreate({where: {gameId: response.data.gameScores[i].gameSchedule.gameId }, defaults: tempObj})
-  .spread((games, created) => {
-    console.log(games.get({
-      plain: true
-    }))
-    console.log(created)
-  })
-
-        }
-
-          // Update all of the games to be inactive
-          db.games.update({
-            gameStatus: 'inactive'
-          }, {
-            where: {
-              gameStatus: 'active'
-            }
-          })
-
-          // Now that they are all inactive, update the current week games to have an active game status
-          db.games.update({
-            gameStatus: 'active'
-          }, {
-            where: {
-              week: response.data.week
-            }
-          })
-       
-  
-      })
-      .catch(function(error) {
-        if (error.response) {
-          console.log(response);
-        }
-        res.status(500);
-      });
-
-  });
-
-
-  // Seed db with JSON data from API
-  app.post("/api/games", function(req, res) {
-    var queryUrl = "https://feeds.nfl.com/feeds-rs/scores.json";
-    axios
-      .get(queryUrl)
-      .then(function(response) {
-        
-        
-        // console.log(response.data.gameScores[0].gameSchedule.gameId);
-  
-        for (let i = 0; i < response.data.gameScores.length; i++) {
-          //let gameSchedule = response.data.gameScores[i].gameSchedule;
-          // let scores = response.data.gameScores[i].scores;
-        
-          
-
-          var tempObj = {
-
             gameID: response.data.gameScores[i].gameSchedule.gameId,
             homeTeam: response.data.gameScores[i].gameSchedule.homeTeam.fullName,
             firstQsHome: response.data.gameScores[i].score.homeTeamScore.pointQ1,
@@ -228,7 +128,7 @@ module.exports = function(app) {
       })
       .catch(function(error) {
         if (error.response) {
-          console.log(response);
+          // console.log(response);
         }
         res.status(500);
       });
