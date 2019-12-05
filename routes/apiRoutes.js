@@ -97,42 +97,7 @@ module.exports = function(app) {
         res.status(500);
       });
   });
-  // Seed db with JSON data from API
-  app.post("/api/games", function(req, res) {
-    var queryUrl = "https://feeds.nfl.com/feeds-rs/scores.json";
-    axios
-      .get(queryUrl)
-      .then(function(response) {
-        // console.log(response.data.gameScores[0].gameSchedule.gameId);
-        for (let i = 0; i < response.data.gameScores.length; i++) {
-          //let gameSchedule = response.data.gameScores[i].gameSchedule;
-          // let scores = response.data.gameScores[i].scores;
-          var tempObj = {
-            gameID: response.data.gameScores[i].gameSchedule.gameId,
-            homeTeam: response.data.gameScores[i].gameSchedule.homeTeam.fullName,
-            firstQsHome: response.data.gameScores[i].score.homeTeamScore.pointQ1,
-            secondQsHome: response.data.gameScores[i].score.homeTeamScore.pointQ2,
-            thirdQsHome: response.data.gameScores[i].score.homeTeamScore.pointQ3,
-            forthQsHome: response.data.gameScores[i].score.homeTeamScore.pointQ4,
-            finalScoreHome: response.data.gameScores[i].score.homeTeamScore.pointTotal,
-            awayTeam: response.data.gameScores[i].gameSchedule.visitorTeam.fullName,
-            firstQsAway: response.data.gameScores[i].score.visitorTeamScore.pointQ1,
-            secondQsAway: response.data.gameScores[i].score.visitorTeamScore.pointQ2,
-            thirdQsAway: response.data.gameScores[i].score.visitorTeamScore.pointQ3,
-            forthQsAway: response.data.gameScores[i].score.visitorTeamScore.pointQ4,
-            finalScoreAway: response.data.gameScores[i].score.visitorTeamScore.pointTotal
-          };
-          console.log(tempObj);
-           db.games.create(tempObj);
-        }
-      })
-      .catch(function(error) {
-        if (error.response) {
-          // console.log(response);
-        }
-        res.status(500);
-      });
-  });
+  
 };
 // app.post("/api/games/:gameId", function(req, res) {
 //   var queryUrl = "http://www.nfl.com/liveupdate/game-center/2019120111/2019120111_gtd.json";
