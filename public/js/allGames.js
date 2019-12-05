@@ -3,7 +3,7 @@ $(document).ready(function() {
   var gamesContainer = $(".games-container");
 
   // Click events for the select games buttons
-  // $(document).on("click", "button.select", handleSelectGame);
+  
 initializeRow();
   // Get the initial list of games
   // getGames();
@@ -36,6 +36,7 @@ initializeRow();
       createNewRow(gamesToAdd);
       gamesContainer.append(gamesToAdd);
     });
+  }
 
     // Function to construct a post's HTML
     function createNewRow(games) {
@@ -49,6 +50,7 @@ initializeRow();
       var newAwayTeamBody = $("<h5>");
       var selectBtn = $("<button>");
       selectBtn.addClass("select btn btn-default");
+      selectBtn.addClass("matchBtn");
       newGameCardHeading.text(games.gameId);
       newHomeTeamBody.text(games.homeTeam);
       newAwayTeamBody.text(games.awayTeam);
@@ -69,12 +71,31 @@ initializeRow();
       gamesContainer.append(messageH2);
     }
 
-    // function handleSelectGame() {
-    //   var currentGame = $(this)
-    //     .parent()
-    //     .parent()
-    //     .data("games");
-    //   window.location.href = "/viewgames?gameId=" + currentGameId;
-    // }
-  }
+    let handleSelectGame = function() {
+
+      console.log('hello world');
+      console.log(sessionStorage.jwt);
+
+      $.ajax({
+        url: "/profile",
+        type: "GET",
+        beforeSend: function(xhr){xhr.setRequestHeader('Authorization', sessionStorage.jwt);},
+        
+      }).then(function(response) {
+        console.log(response);
+        let userID = response.id;
+        console.log('this is the user ID')
+        console.log(userID);
+      })
+
+      // var currentGame = $(this)
+      //   .parent()
+      //   .parent()
+      //   .data("games");
+      // window.location.href = "/viewgames?gameId=" + currentGameId;
+
+    }
+
+    $(document).on("click", ".select", handleSelectGame);
+ 
 });

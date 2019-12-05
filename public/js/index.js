@@ -197,12 +197,16 @@ var handleViewTeams = function(event) {
   document.location.href = '/viewteams'
 }
 
-handleViewGames = function(event) {
+var handleViewGames = function(event) {
 
   $.post("/api/games");
 
-  document.location.href = '/viewteams'
+  document.location.href = '/viewgames'
 
+}
+
+var handleSelectTeams = function(event) {
+  console.log('hello world')  
 }
 
 
