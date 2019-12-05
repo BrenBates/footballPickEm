@@ -11,7 +11,14 @@ module.exports = function(app) {
 
    // Get all usergame examples
    app.get("/api/usergames", function(req, res) {
-    db.usergames.findAll({}).then(function(dbUserGames) {
+     
+    let userId = req.query.userId;
+    
+    db.usergames.findAll({
+      where: {
+        userId: userId
+      }
+    }).then(function(dbUserGames) {
       res.json(dbUserGames);
     });
   });

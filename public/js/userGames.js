@@ -8,7 +8,21 @@ $(document).ready(function() {
   
     // InitializeGames handles appending all of the games post HTML inside gameContainer
     function loadUserGames() {
-      $.get("api/usergames", function(userGames) {
+
+        $.ajax({
+            url: "/profile",
+            type: "GET",
+            beforeSend: function(xhr){xhr.setRequestHeader('Authorization', sessionStorage.jwt);},
+            
+          }).then(function(response) {
+
+            let userId = response.id;
+       
+        let data = {
+          userId: userId
+        }
+
+      $.get("api/usergames", data, function(userGames) {
         
         console.log(userGames);
         var userGamesToAdd = [];
@@ -20,6 +34,7 @@ $(document).ready(function() {
         createNewUserGamesRow(userGamesToAdd);
         userGamesContainer.append(userGamesToAdd);
       });
+    })
     }
   
       // Function to construct a post's HTML
@@ -32,14 +47,17 @@ $(document).ready(function() {
         newUserGameCardBody.addClass("card-body");
         var newUserHomeTeamBody = $("<h5>");
         var newUserAwayTeamBody = $("<h5>");
+        var newUserWeekBody = $("<h5>");
         var userSelectBtn = $("<button>");
         userSelectBtn.addClass("select btn btn-default");
         newUserGameCardHeading.text(userGames.gameId);
-        newUserHomeTeamBody.text(userGames.homeTeam);
-        newUserAwayTeamBody.text(userGames.awayTeam);
+        newUserHomeTeamBody.text("Home Team: " + userGames.homeTeam);
+        newUserAwayTeamBody.text("Away Team: " +userGames.awayTeam);
+        newUserWeekBody.text("Week: " +userGames.week);
         userSelectBtn.text("Select");
         newUserGameCardBody.append(newUserGameCardHeading);
         newUserGameCardBody.append(userSelectBtn);
+        newUserGameCardBody.append(newUserWeekBody);
         newUserGameCardBody.append(newUserAwayTeamBody);
         newUserGameCardBody.append(newUserHomeTeamBody);
         newUserGameCard.append(newUserGameCardBody);
