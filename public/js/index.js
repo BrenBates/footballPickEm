@@ -134,11 +134,11 @@ var handleLogIn = function(event) {
     logInForm.reset();
 
   $.post("/login", handShake).then( function(response) {
-    console.log("log in succcessful");
+    
     userToken = response.token;
     sessionStorage.setItem('jwt', userToken);
 
-    if(userToken !== null) {
+    if(userToken !== undefined) {
       loggedOutLinks.forEach(item => item.style.display = 'none');
       loggedInLinks.forEach(item => item.style.display = 'block');
     }
