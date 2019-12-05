@@ -28,7 +28,7 @@ initializeRow();
   // InitializeGames handles appending all of the games post HTML inside gameContainer
   function initializeRow() {
     $.get("api/games", function(games) {
-      console.log(games.data);
+      
       var gamesToAdd = [];
       for (var i = 0; i < games.length; i++) {
         gamesToAdd.push(createNewRow(games[i]));
@@ -50,11 +50,12 @@ initializeRow();
       var newAwayTeamBody = $("<h5>");
       var selectBtn = $("<button>");
       selectBtn.addClass("select btn btn-default");
-      selectBtn.addClass("matchBtn");
+      selectBtn.attr('nflGameId',games.gameId);
       newGameCardHeading.text(games.gameId);
       newHomeTeamBody.text(games.homeTeam);
       newAwayTeamBody.text(games.awayTeam);
       selectBtn.text("Select");
+      newGameCardBody.append(newGameCardHeading);
       newGameCardBody.append(selectBtn);
       newGameCardBody.append(newAwayTeamBody);
       newGameCardBody.append(newHomeTeamBody);
@@ -73,8 +74,10 @@ initializeRow();
 
     let handleSelectGame = function() {
 
-      console.log('hello world');
-      console.log(sessionStorage.jwt);
+      
+       let nflGameId = $(this).attr("nflGameId");
+       
+      
 
       $.ajax({
         url: "/profile",
@@ -82,10 +85,20 @@ initializeRow();
         beforeSend: function(xhr){xhr.setRequestHeader('Authorization', sessionStorage.jwt);},
         
       }).then(function(response) {
-        console.log(response);
-        let userID = response.id;
+  
+        let userId = response.id;
         console.log('this is the user ID')
-        console.log(userID);
+        console.log(userId);
+        console.log(nflGameId);
+        let data = {
+          userId: userId,
+          nflGameId: nflGameId
+        }
+        console.log('this is the data')
+        console.log(data);
+
+        $.post("/api/usergames", data)
+
       })
 
       // var currentGame = $(this)

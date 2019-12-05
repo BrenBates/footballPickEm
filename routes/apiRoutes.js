@@ -97,46 +97,96 @@ module.exports = function(app) {
         res.status(500);
       });
   });
+
+  app.post("/api/usergames", function(req,res) {
+
+    let userId = req.body.userId
+    let nflGameId = req.body.nflGameId
+
+    // function to shuffle array of numbers to assign them randomly to the columns and rows for the game
+    function shuffle(array) {
+      var currentIndex = array.length,
+          temporaryValue, randomIndex;
+  
+      // While there remain elements to shuffle...
+      while (0 !== currentIndex) {
+  
+          // Pick a remaining element...
+          randomIndex = Math.floor(Math.random() * currentIndex);
+          currentIndex -= 1;
+  
+          // And swap it with the current element.
+          temporaryValue = array[currentIndex];
+          array[currentIndex] = array[randomIndex];
+          array[randomIndex] = temporaryValue;
+      }
+  
+      return array;
+  }
+    let randomColumn = shuffle([0, 1, 2 ,3, 4, 5, 6, 7, 8, 9]);
+    let randomRow = shuffle([0, 1, 2 ,3, 4, 5, 6, 7, 8, 9]);
+   
+
+    db.games.findOne({
+      where: {
+        gameId: nflGameId
+      }
+    }).then(function(dbGames) {
+      // console.log(dbGames)
+  
+      let userWeek = dbGames.dataValues.week;
+      let userHomeTeam = dbGames.dataValues.homeTeam;
+      let userAwayTeam = dbGames.dataValues.awayTeam;
+      let userFirstQsHome = dbGames.dataValues.firstQsHome;
+      let userSecondQsHome = dbGames.dataValues.secondQsHome;
+      let userThirdQsHome = dbGames.dataValues.thirdQsHome;
+      let userForthQsHome = dbGames.dataValues.forthQsHome;
+      let userFirstQsAway = dbGames.dataValues.firstQsAway;
+      let userSecondQsAway = dbGames.dataValues.secondQsAway;
+      let userThirdQsAway = dbGames.dataValues.thirdQsAway;
+      let userForthQsAway = dbGames.dataValues.forthQsAway;
+    
+
+    var temporaryObj = {
+  
+    userId: userId,
+    nflGameId: nflGameId,
+    week: userWeek,
+    homeTeam: userHomeTeam,
+    awayTeam: userAwayTeam,
+    firstQsHome: userFirstQsHome,
+    secondQsHome: userSecondQsHome,
+    thirdQsHome: userThirdQsHome,
+    forthQsHome: userForthQsHome,
+    firstQsAway: userFirstQsAway,
+    secondQsAway: userSecondQsAway,
+    thirdQsAway: userThirdQsAway,
+    forthQsAway: userForthQsAway,
+    a: randomColumn[0],
+    b: randomColumn[1],
+    c: randomColumn[2],
+    d: randomColumn[3],
+    e: randomColumn[4],
+    f: randomColumn[5],
+    g: randomColumn[6],
+    h: randomColumn[7],
+    i: randomColumn[8],
+    j: randomColumn[9],
+    one: randomRow[0],
+    two: randomRow[1],
+    three: randomRow[2],
+    four: randomRow[3],
+    five: randomRow[4],
+    six: randomRow[5],
+    seven: randomRow[6],
+    eight: randomRow[7],
+    nine: randomRow[8],
+    ten: randomRow[9]
+  }
+
+  console.log(temporaryObj);
+  db.usergames.create(temporaryObj);
+})
+  })
   
 };
-// app.post("/api/games/:gameId", function(req, res) {
-//   var queryUrl = "http://www.nfl.com/liveupdate/game-center/2019120111/2019120111_gtd.json";
-//   axios
-//     .get(queryUrl)
-//     .then(function(response) {
-//       for (var i = 0; i < response.gameScores.length; i++) {
-//         var gameSchedule = response[i].gameSchedule;
-//         var scores = response[i].scores;
-//         var tempObj = {
-//           gameID: gameSchedule.gameId,
-//           homeTeam: gameSchedule.homeTeam.fullName,
-//           firstQsHome: scores.homeTeamScore.pointQ1,
-//           secondQsHome: scores.homeTeamScore.pointQ2,
-//           thirdQsHome: scores.homeTeamScore.pointQ3,
-//           forthQsHome: scores.homeTeamScore.pointQ4,
-//           finalScoreHome: scores.homeTeamScore.pointTotal,
-//           awayTeam: gameSchedule.awayTeam.fullName,
-//           firstQsAway: scores.awayTeamScore.pointQ1,
-//           secondQsAway: scores.awayTeamScore.pointQ2,
-//           thirdQsAway: scores.awayTeamScore.pointQ3,
-//           forthQsAway: scores.awayTeamScore.pointQ4,
-//           finalScoreAway: scores.awayTeamScore.pointTotal
-//         };
-//       }
-//     })
-//     .catch(function(error) {
-//       if (error.response) {
-//         console.log(response);
-//       }
-//       res.status(500);
-//     });
-// });
-// };
-// Delete an example by id
-// app.delete("/api/examples/:id", function(req, res) {
-//   db.Example.destroy({ where: { id: req.params.id } }).then(function(
-//     dbExample
-//   ) {
-//     res.json(dbExample);
-//   });
-// });
