@@ -3,7 +3,7 @@ var db = require("../models");
 var axios = require("axios");
 module.exports = function(app) {
   // Get all examples
-  app.get("/games", function(req, res) {
+  app.get("/api/games", function(req, res) {
     db.games.findAll({}).then(function(dbGames) {
       res.json(dbGames);
     });
@@ -128,7 +128,7 @@ module.exports = function(app) {
       })
       .catch(function(error) {
         if (error.response) {
-          console.log(response);
+          // console.log(response);
         }
         res.status(500);
       });
