@@ -23,18 +23,18 @@ module.exports = function(app) {
     });
   });
 
-  // Route to specific game that is chosen //
-  // app.get("/games/:game", function(req, res) {
-  //   var chosen = req.params.games;
-  //   console.log(chosen);
-  //   for (var i = 0; i < games.length; i++) {
-  //     if (chosen === games[i].routeName) {
-  //       return res.json(games[i]);
+ 
+
+  // app.post("/api/usergames/:usergameid", function(req,res) {
+  //   let userGameId = req.params.usergameid
+  //   console.log("this is the user game id: ")
+  //   console.log(userGameId);
+  //   db.usergames.findOne({
+  //     where: {
+  //       userGameId: req.params.usergameid
   //     }
-  //   }
-  //   return res.send("No game found");
-  // });
-  // Seed db with JSON data from API
+  //   }).then(function(dbUGI) {
+
   app.post("/api/games", function(req, res) {
     var queryUrl = "https://feeds.nfl.com/feeds-rs/scores.json";
     axios
@@ -162,7 +162,7 @@ module.exports = function(app) {
       let userForthQsAway = dbGames.dataValues.forthQsAway;
     
 
-    var temporaryObj = {
+    var userGameObj = {
   
     userId: userId,
     nflGameId: nflGameId,
@@ -199,9 +199,20 @@ module.exports = function(app) {
     ten: randomRow[9]
   }
 
-  console.log(temporaryObj);
-  db.usergames.create(temporaryObj);
+  var userGameInstanceObj = {
+    userId: userId,
+    nflGameId: nflGameId
+  }
+
+  console.log(userGameInstanceObj)
+  
+
+  //create usergames table entry and create usergameinstance table entry with the same id 
+  db.usergames.create(userGameObj);
+  db.usergameinstances.create(userGameInstanceObj);
 })
   })
+
+  
   
 };
