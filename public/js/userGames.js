@@ -76,7 +76,10 @@ $(document).ready(function() {
   
       let handleUserGame = function() {
 
-  
+        let userGameId = $(this).attr("userGamesId");
+        console.log('this is the user games Id', userGameId);
+        // $.post("/api/usergames/" + userGameId )
+        window.location.href = "/usergames/" + userGameId
       }
   
       $(document).on("click", ".select", handleUserGame);
