@@ -14,8 +14,10 @@ var loggedOutLinks= document.querySelectorAll('.logged-out');
 
 
 if(sessionStorage.getItem('jwt')){
+  if(sessionStorage.getItem('jwt') !== undefined){
     loggedOutLinks.forEach(item => item.style.display = 'none');
       loggedInLinks.forEach(item => item.style.display = 'block');
+    }
 }
 
 
