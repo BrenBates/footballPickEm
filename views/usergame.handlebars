@@ -38,10 +38,10 @@
           <button id="submit" class="btn btn-primary float-right">Submit</button>
         </form> --}}
 
-<form action="POST">
+<form>
 
 <div class="clearfix">
-<button id="refresh" class="btn btn-primary float-right">Refresh/Calculate</button>
+<button id="refresh" datauserid={{ug.userId}} datausergameid={{ug.userGameId}} datanflgameid={{ug.nflGameId}} class="btn btn-primary float-right">Refresh/Calculate</button>
 </div>  
 
 <div class="grid">
@@ -369,3 +369,130 @@
   </div>
 </div>
 </form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+ $(document).on("click", "#refresh", function() {
+    event.preventDefault();
+    console.log('hello world')
+
+    let instanceData = {
+      userGameId: $(this).attr("datausergameid"),
+      userId: $(this).attr("datauserid"),
+      nflGameId: $(this).attr("datanflgameid"),
+      A1: $("#A1").val().trim(),
+      A2: $("#A2").val().trim(),
+      A3: $("#A3").val().trim(),
+      A4: $("#A4").val().trim(),
+      A5: $("#A5").val().trim(),
+      A6: $("#A6").val().trim(),
+      A7: $("#A7").val().trim(),
+      A8: $("#A8").val().trim(),
+      A9: $("#A9").val().trim(),
+      A10: $("#A10").val().trim(),
+
+      B1: $("#B1").val().trim(),
+      B2: $("#B2").val().trim(),
+      B3: $("#B3").val().trim(),
+      B4: $("#B4").val().trim(),
+      B5: $("#B5").val().trim(),
+      B6: $("#B6").val().trim(),
+      B7: $("#B7").val().trim(),
+      B8: $("#B8").val().trim(),
+      B9: $("#B9").val().trim(),
+      B10: $("#B10").val().trim(),
+
+      C1: $("#C1").val().trim(),
+      C2: $("#C2").val().trim(),
+      C3: $("#C3").val().trim(),
+      C4: $("#C4").val().trim(),
+      C5: $("#C5").val().trim(),
+      C6: $("#C6").val().trim(),
+      C7: $("#C7").val().trim(),
+      C8: $("#C8").val().trim(),
+      C9: $("#C9").val().trim(),
+      C10: $("#C10").val().trim(),
+
+      D1: $("#D1").val().trim(),
+      D2: $("#D2").val().trim(),
+      D3: $("#D3").val().trim(),
+      D4: $("#D4").val().trim(),
+      D5: $("#D5").val().trim(),
+      D6: $("#D6").val().trim(),
+      D7: $("#D7").val().trim(),
+      D8: $("#D8").val().trim(),
+      D9: $("#D9").val().trim(),
+      D10: $("#D10").val().trim(),
+    
+      E1: $("#E1").val().trim(),
+      E2: $("#E2").val().trim(),
+      E3: $("#E3").val().trim(),
+      E4: $("#E4").val().trim(),
+      E5: $("#E5").val().trim(),
+      E6: $("#E6").val().trim(),
+      E7: $("#E7").val().trim(),
+      E8: $("#E8").val().trim(),
+      E9: $("#E9").val().trim(),
+      E10: $("#E10").val().trim(),
+
+      F1: $("#F1").val().trim(),
+      F2: $("#F2").val().trim(),
+      F3: $("#F3").val().trim(),
+      F4: $("#F4").val().trim(),
+      F5: $("#F5").val().trim(),
+      F6: $("#F6").val().trim(),
+      F7: $("#F7").val().trim(),
+      F8: $("#F8").val().trim(),
+      F9: $("#F9").val().trim(),
+      F10: $("#F10").val().trim(),
+
+      G1: $("#G1").val().trim(),
+      G2: $("#G2").val().trim(),
+      G3: $("#G3").val().trim(),
+      G4: $("#G4").val().trim(),
+      G5: $("#G5").val().trim(),
+      G6: $("#G6").val().trim(),
+      G7: $("#G7").val().trim(),
+      G8: $("#G8").val().trim(),
+      G9: $("#G9").val().trim(),
+      G10: $("#G10").val().trim(),
+
+      H1: $("#H1").val().trim(),
+      H2: $("#H2").val().trim(),
+      H3: $("#H3").val().trim(),
+      H4: $("#H4").val().trim(),
+      H5: $("#H5").val().trim(),
+      H6: $("#H6").val().trim(),
+      H7: $("#H7").val().trim(),
+      H8: $("#H8").val().trim(),
+      H9: $("#H9").val().trim(),
+      H10: $("#H10").val().trim(),
+
+      I1: $("#I1").val().trim(),
+      I2: $("#I2").val().trim(),
+      I3: $("#I3").val().trim(),
+      I4: $("#I4").val().trim(),
+      I5: $("#I5").val().trim(),
+      I6: $("#I6").val().trim(),
+      I7: $("#I7").val().trim(),
+      I8: $("#I8").val().trim(),
+      I9: $("#I9").val().trim(),
+      I10: $("#I10").val().trim(),
+
+      J1: $("#J1").val().trim(),
+      J2: $("#J2").val().trim(),
+      J3: $("#J3").val().trim(),
+      J4: $("#J4").val().trim(),
+      J5: $("#J5").val().trim(),
+      J6: $("#J6").val().trim(),
+      J7: $("#J7").val().trim(),
+      J8: $("#J8").val().trim(),
+      J9: $("#J9").val().trim(),
+      J10: $("#J10").val().trim(),
+    }
+
+    console.log(instanceData);
+    $.post("/api/userinstances", instanceData)
+  })
+</script>
