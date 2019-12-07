@@ -6,6 +6,7 @@
   text-decoration: none;
   color: white;
 } */
+
 body {
   margin: 0 auto;
   max-width: 56em;
@@ -16,13 +17,13 @@ body {
   /* Grid Fallback */
   display: flex;
   flex-wrap: wrap;
-  
   /* Supports Grid */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(65px, 1fr));
   grid-auto-rows: minmax(5px, auto);
   grid-gap: 1em;
 }
+
 .module {
   /* Demo-Specific Styles */
   background: #eaeaea;
@@ -30,24 +31,71 @@ body {
   align-items: center;
   justify-content: center;
   height: 65px;
-  
   /* Flex Fallback */
   margin-left: 5px;
   margin-right: 5px;
   flex: 1 1 200px;
 }
+
 @supports (display: grid) {
   .module {
     margin: 0;
   }
 }
+
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
 }
+
 th, td {
   padding: 5px;
 }
+
 th {
   text-align: left;
 }
+
+.button {
+  background: transparent;
+  width: 180px;
+  padding: 4px 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  border-radius: 3px;
+}
+
+#teamlogo {
+  width: 100%;
+}
+
+.col {
+  float: left;
+  width: 33.33%;
+}
+
+  /* p {
+    font-family: 'Roboto';
+    text-align: center;
+    text-transform: uppercase;
+    color: #FFF;
+    user-select: none;
+  } */
+
+  .button:hover {
+    cursor: pointer;
+  }
+  
+  .button:after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 10%;
+    border-radius: 50%;
+    background-color: darken(#f1c40f, 20%);
+    opacity: 0.4;
+    bottom: -30px;
+  }

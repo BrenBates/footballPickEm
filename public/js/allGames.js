@@ -1,10 +1,11 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // gamesContainer holds all of the games
   var gamesContainer = $(".games-container");
 
   // Click events for the select games buttons
-  
-initializeRow();
+  // $(document).on("click", "button.select", handleSelectGame);
+  initializeRow();
+
   // Get the initial list of games
   // getGames();
 
@@ -38,6 +39,19 @@ initializeRow();
     });
   }
 
+    //let $button = document.querySelector('.button');
+    let $buttons = document.getElementsByClassName("button");
+    
+    for(let button of $buttons) {
+      button.addEventListener('click', () => {
+          let duration = 0.3;
+          let delay = 0.08;
+          TweenMax.to(button, duration, { scaleY: 1.6, ease: Expo.easeOut });
+          TweenMax.to(button, duration, { scaleX: 1.2, scaleY: 1, ease: Back.easeOut, easeParams: [3], delay: delay });
+          TweenMax.to(button, duration * 1.25, { scaleX: 1, scaleY: 1, ease: Back.easeOut, easeParams: [6], delay: delay * 3 });
+      });      
+    };
+  
     // Function to construct a post's HTML
     function createNewRow(games) {
       var newGameCard = $("<div>");
@@ -67,8 +81,8 @@ initializeRow();
     }
 
     function renderEmpty() {
-      var massageH2 = $("<div>");
-      massageH2.addClass("alert alert-danger");
+      var messageH2 = $("<div>");
+      messageH2.addClass("alert alert-danger");
       messageH2.css({ "text-align": "center", "margin-top": "50px" });
       messageH2.text("No games have yet to be seeded into the db.");
       gamesContainer.append(messageH2);
