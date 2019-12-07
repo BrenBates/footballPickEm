@@ -83,10 +83,10 @@ module.exports = function(app) {
     //Run a find or create based on gameId to add the game to the database if it doesn't exist. 
   db.games.findOrCreate({where: {gameId: response.data.gameScores[i].gameSchedule.gameId }, defaults: tempObj})
   .spread((games, created) => {
-    // console.log(games.get({
-    //   plain: true
-    // }))
-    // console.log(created)
+    console.log(games.get({
+      plain: true
+    }))
+    console.log(created)
   })
         }
           // Update all of the games to be inactive
