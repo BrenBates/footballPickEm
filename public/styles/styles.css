@@ -10,7 +10,45 @@ body {
   margin: 0 auto;
   max-width: 56em;
   padding: 1em 0;
+  /* background-image: url("../images/hero_img.jpeg"); */
 }
+
+.background {
+  width: 1000px;
+  height: 600px;
+  display: block;
+  position: relative;
+}
+
+.background::after {
+  content: "";
+  background: url("../images/hero_img.jpeg");
+  opacity: 0.3;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+  border-radius: 25px;   
+}
+
+.btn-primary,
+.btn-primary:active,
+.btn-primary:visited,
+.btn-primary:focus {
+    background-color: #E8716D;
+    border-color: #E8716D;
+}
+
+.btn-primary:hover {
+  background-color: #D7716D;
+  border-color: #D7716D;
+}
+
+/* .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  background-color: #E8716D !important;
+} */
 
 .grid {
   /* Grid Fallback */
@@ -50,4 +88,10 @@ th, td {
 }
 th {
   text-align: left;
+}
+
+.fancyfont {
+  /* font for the home page */
+  font-family: 'Squada One', cursive;
+  color: #013369;
 }
