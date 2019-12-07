@@ -117,4 +117,6 @@ initializeRow();
       let modal = $('#modalGameCreated').modal('hide');
       location.reload();
     })
+
 });
+
