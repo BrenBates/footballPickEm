@@ -34,7 +34,11 @@ loadUserGames();
         console.log('this is the user games Id', userGameId);
         // $.post("/api/usergames/" + userGameId )
         window.location.href = "/usergames/" + userGameId
+<<<<<<< HEAD
+        
+=======
 
+>>>>>>> e4e6a2b163da5767875db7027e939ac581d40bd9
       }
 
       console.log(userGamesToAdd[0]);
