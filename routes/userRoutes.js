@@ -37,7 +37,7 @@ app.post('/register', (req,res) => {
             db.user.create(userData)
                 .then(user => {
                     let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
-                        expiresIn: 99999999
+                        expiresIn: 10000
                     })
                     
                     console.log(token)
