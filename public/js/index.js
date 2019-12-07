@@ -229,4 +229,3 @@ $signUpBtn.on("click", handleSignUp);
 $viewTeamsBtn.on("click", handleViewTeams);
 $viewGamesBtn.on("click", handleViewGames);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
-

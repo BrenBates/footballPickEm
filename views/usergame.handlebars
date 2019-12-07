@@ -376,7 +376,6 @@
  $(document).on("click", "#refresh", function() {
     event.preventDefault();
     console.log('hello world')
-
     let instanceData = {
       userGameId: $(this).attr("datausergameid"),
       userId: $(this).attr("datauserid"),
@@ -392,6 +391,9 @@
       A9: $("#A9").val().trim(),
       A10: $("#A10").val().trim(),
 
+
+
+
       B1: $("#B1").val().trim(),
       B2: $("#B2").val().trim(),
       B3: $("#B3").val().trim(),
@@ -403,6 +405,9 @@
       B9: $("#B9").val().trim(),
       B10: $("#B10").val().trim(),
 
+
+
+
       C1: $("#C1").val().trim(),
       C2: $("#C2").val().trim(),
       C3: $("#C3").val().trim(),
@@ -413,6 +418,9 @@
       C8: $("#C8").val().trim(),
       C9: $("#C9").val().trim(),
       C10: $("#C10").val().trim(),
+
+
+
 
       D1: $("#D1").val().trim(),
       D2: $("#D2").val().trim(),
@@ -436,6 +444,9 @@
       E9: $("#E9").val().trim(),
       E10: $("#E10").val().trim(),
 
+
+
+
       F1: $("#F1").val().trim(),
       F2: $("#F2").val().trim(),
       F3: $("#F3").val().trim(),
@@ -446,6 +457,9 @@
       F8: $("#F8").val().trim(),
       F9: $("#F9").val().trim(),
       F10: $("#F10").val().trim(),
+
+
+
 
       G1: $("#G1").val().trim(),
       G2: $("#G2").val().trim(),
@@ -458,6 +472,9 @@
       G9: $("#G9").val().trim(),
       G10: $("#G10").val().trim(),
 
+
+
+
       H1: $("#H1").val().trim(),
       H2: $("#H2").val().trim(),
       H3: $("#H3").val().trim(),
@@ -468,6 +485,9 @@
       H8: $("#H8").val().trim(),
       H9: $("#H9").val().trim(),
       H10: $("#H10").val().trim(),
+
+
+
 
       I1: $("#I1").val().trim(),
       I2: $("#I2").val().trim(),
@@ -480,6 +500,9 @@
       I9: $("#I9").val().trim(),
       I10: $("#I10").val().trim(),
 
+
+
+
       J1: $("#J1").val().trim(),
       J2: $("#J2").val().trim(),
       J3: $("#J3").val().trim(),
@@ -491,6 +514,9 @@
       J9: $("#J9").val().trim(),
       J10: $("#J10").val().trim(),
     }
+h
+
+
 
     console.log(instanceData);
     $.post("/api/userinstances", instanceData)
