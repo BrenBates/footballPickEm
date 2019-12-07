@@ -44,24 +44,6 @@ module.exports = function(sequelize, DataTypes) {
     forthQsAway: {
       type: DataTypes.INTEGER
     },
-    clock: {
-      type: DataTypes.STRING
-    },
-    currentQtr: {
-      type: DataTypes.STRING
-    },
-    down: {
-      type: DataTypes.STRING
-    },
-    yrdsTogo: {
-      type: DataTypes.INTEGER
-    },
-    positionTeam: {
-      type: DataTypes.STRING
-    },
-    currentYrdLine: {
-      type: DataTypes.STRING
-    },
     a: {
       type: DataTypes.INTEGER
     },
