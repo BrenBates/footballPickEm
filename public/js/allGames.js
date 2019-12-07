@@ -1,6 +1,108 @@
 $(document).ready(function() {
   // gamesContainer holds all of the games
   var gamesContainer = $(".games-container");
+  function whichTeamImage(team) {
+    for (var i = 0; i < 32; i++) {
+      if (team === "Dallas Cowboys") {
+        return "./images/DAL.png"
+      }
+      if (team === "Chicago Bears") {
+        return "./images/CHI.png"
+      }
+      if (team === "Carolina Panthers") {
+        return "./images/CAR.png"
+      }
+      if (team === "Atlanta Falcons") {
+        return "./images/ATL.png"
+      }
+      if (team === "Baltimore Ravens") {
+        return "./images/BAL.png"
+      }
+      if (team === "Buffalo Bills") {
+        return "./images/BUF.png"
+      }
+      if (team === "Cincinnati Bengals") {
+        return "./images/CIN.png"
+      }
+      if (team === "Cleveland Browns") {
+        return "./images/CLE.png"
+      }
+      if (team === "Washington Redskins") {
+        return "./images/WAS.png"
+      }
+      if (team === "Green Bay Packers") {
+        return "./images/GB.png"
+      }
+      if (team === "Denver Broncos") {
+        return "./images/DEN.png"
+      }
+      if (team === "Houston Texans") {
+        return "./images/HOU.png"
+      }
+      if (team === "Detroit Lions") {
+        return "./images/DET.png"
+      }
+      if (team === "Minnesota Vikings") {
+        return "./images/MIN.png"
+      }
+      if (team === "San Francisco 49ers") {
+        return "./images/SF.png"
+      }
+      if (team === "New Orleans Saints") {
+        return "./images/NO.png"
+      }
+      if (team === "Miami Dolphins") {
+        return "./images/MIA.png"
+      }
+      if (team === "New York Jets") {
+        return "./images/NYJ.png"
+      }
+      if (team === "Indianapolis Colts") {
+        return "./images/IND.png"
+      }
+      if (team === "Tampa Bay Buccaneers") {
+        return "./images/TB.png"
+      }
+      if (team === "Los Angeles Chargers") {
+        return "./images/LAC.png"
+      }
+      if (team === "Jacksonville Jaguars") {
+        return "./images/JAX.png"
+      }
+      if (team === "Pittsburgh Steelers") {
+        return "./images/PIT.png"
+      }
+      if (team === "Arizona Cardinals") {
+        return "./images/AZ.png"
+      }
+      if (team === "Kansas City Chiefs") {
+        return "./images/KC.png"
+      }
+      if (team === "New England Patriots") {
+        return "./images/NE.png"
+      }
+      if (team === "Tennessee Titans") {
+        return "./images/TEN.png"
+      }
+      if (team === "Oakland Raiders") {
+        return "./images/OAK.png"
+      }
+      if (team === "Seattle Seahawks") {
+        return "./images/SEA.png"
+      }
+      if (team === "Los Angeles Rams") {
+        return "./images/LAR.png"
+      }
+      if (team === "New York Giants") {
+        return "./images/NYG.png"
+      }
+      if (team === "Philadelphia Eagles") {
+        return "./images/PHI.png"
+      }
+      else null
+    }
+  }
+  
 
   // Click events for the select games buttons
   
@@ -46,8 +148,8 @@ initializeRow();
       newGameCardHeading.addClass("card-header");
       var newGameCardBody = $("<div>");
       newGameCardBody.addClass("card-body");
-      var newHomeTeamBody = $("<h5>");
-      var newAwayTeamBody = $("<h5>");
+      var newHomeTeamBody = $("<div>");
+      var newAwayTeamBody = $("<div>");
       var selectBtn = $("<button>");
       selectBtn.addClass("select btn btn-default");
       selectBtn.attr('nflGameId',games.gameId);
@@ -55,7 +157,14 @@ initializeRow();
       selectBtn.attr('data-target','#modalGameCreated');
       newGameCardHeading.text(games.gameId);
       newHomeTeamBody.text(games.homeTeam);
+      
+      newHomeTeamBody.append("<img src='" + whichTeamImage(games.homeTeam) + "'>");
+      
       newAwayTeamBody.text(games.awayTeam);
+
+      newAwayTeamBody.append("<img src='" + whichTeamImage(games.awayTeam) + "'>");
+
+
       selectBtn.text("Select");
       newGameCardBody.append(newGameCardHeading);
       newGameCardBody.append(selectBtn);

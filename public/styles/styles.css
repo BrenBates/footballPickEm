@@ -14,8 +14,8 @@ body {
 }
 
 .background {
-  width: 1000px;
-  height: 600px;
+  width: 2000px;
+  height: 650px;
   display: block;
   position: relative;
 }
@@ -30,20 +30,20 @@ body {
   right: 0;
   position: absolute;
   z-index: -1;
-  border-radius: 25px;   
+  border-radius: 20px;   
 }
 
 .btn-primary,
 .btn-primary:active,
 .btn-primary:visited,
 .btn-primary:focus {
-    background-color: #E8716D;
-    border-color: #E8716D;
+    background-color: #E8716D !important;
+    border-color: #E8716D !important;
 }
 
 .btn-primary:hover {
-  background-color: #D7716D;
-  border-color: #D7716D;
+  background-color: #D7716D !important;
+  border-color: #D7716D !important;
 }
 
 /* .btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
