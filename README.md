@@ -8,7 +8,7 @@ https://nflpickem123.herokuapp.com/
 
 
 ## Team Members:
-RJ Pupunu, Colin Reesor, Xander Canedo
+RJ Pupunu, Colin Reesor, Xander Canedo, Brennen Bates
 
 ## Technology Used:
 HTML, CSS, Bootstrap, Javascript, Jquery, Handlebars, MySQL, Sequelized, Heroku, JawsDB, MVC, Axios
@@ -19,8 +19,8 @@ bcrypt - used to encrypt passwords when saving user data
 
 ## APIs used:
 NFL Game Data:
-https://feeds.nfl.com/feeds-rs/scores.json
-http://www.nfl.com/liveupdate/game-center/2018102107/2018102107_gtd.json
+1. https://feeds.nfl.com/feeds-rs/scores.json
+2. http://www.nfl.com/liveupdate/game-center/2018102107/2018102107_gtd.json
 
 ## Project description:
 This app allows you to create pick em forms for NFL games so that you can bet on the games with your friends.  Typically these forms are printed out and passed around at parties or gatherings, people buy a certain number of squares and put their name on the sheet.  
