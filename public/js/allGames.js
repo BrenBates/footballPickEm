@@ -92,10 +92,19 @@ $(document).ready(function () {
     //   newGameCard.data("games", games);
     //   return newGameCard;
     // }
+    let $button = document.querySelector('.button');
+
+    $button.addEventListener('click', function () {
+        let duration = 0.3;
+        let delay = 0.08;
+        TweenMax.to($button, duration, { scaleY: 1.6, ease: Expo.easeOut });
+        TweenMax.to($button, duration, { scaleX: 1.2, scaleY: 1, ease: Back.easeOut, easeParams: [3], delay: delay });
+        TweenMax.to($button, duration * 1.25, { scaleX: 1, scaleY: 1, ease: Back.easeOut, easeParams: [6], delay: delay * 3 });
+    });
 
     function renderEmpty() {
-      var massageH2 = $("<div>");
-      massageH2.addClass("alert alert-danger");
+      var messageH2 = $("<div>");
+      messageH2.addClass("alert alert-danger");
       messageH2.css({ "text-align": "center", "margin-top": "50px" });
       messageH2.text("No games have yet to be seeded into the db.");
       gamesContainer.append(messageH2);
