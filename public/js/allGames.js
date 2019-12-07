@@ -51,6 +51,8 @@ initializeRow();
       var selectBtn = $("<button>");
       selectBtn.addClass("select btn btn-default");
       selectBtn.attr('nflGameId',games.gameId);
+      selectBtn.attr('data-toggle','modal');
+      selectBtn.attr('data-target','#modalGameCreated');
       newGameCardHeading.text(games.gameId);
       newHomeTeamBody.text(games.homeTeam);
       newAwayTeamBody.text(games.awayTeam);
@@ -73,7 +75,7 @@ initializeRow();
     }
 
     let handleSelectGame = function() {
-
+      event.preventDefault();
       
        let nflGameId = $(this).attr("nflGameId");
        
@@ -110,5 +112,9 @@ initializeRow();
     }
 
     $(document).on("click", ".select", handleSelectGame);
- 
+    $(document).on("click", "#closeGameCreated", function() {
+      event.preventDefault();
+      let modal = $('#modalGameCreated').modal('hide');
+      location.reload();
+    })
 });

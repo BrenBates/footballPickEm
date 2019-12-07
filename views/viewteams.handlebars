@@ -15,7 +15,8 @@
 	<div class="container">
 		<div class="row mt-4">
             <div class="col-md-2 col-sm-2">
-            <a class="btn btn-light" href="/index">Logout</a>
+            <a class="btn btn-light" href="/">Home</a>
+             <a class="btn btn-light" href="/viewgames">View Your Current Games</a>
             </div>
         </div>
 	</div>    
@@ -69,6 +70,27 @@
                 </div>
             </div> --}}
         </div>
+
+
+{{!-- Modal for notifying user that they created a user game --}}
+
+        
+  <div class="modal fade" id="modalGameCreated">
+    <div class="modal-dialog">
+      <div class="modal-content">
+      
+        <!-- body -->
+        <div>
+          <p>You have created a new game!  Click on View Your Current Games to continue.</p>
+        </div>
+        <!-- footer -->
+        <div class="modal-footer">
+          <button id='closeGameCreated' class="btn btn-dark btn-block">OK</button>
+        </div>
+        ​
+      </div>
+    </div>
+  </div>
         {{!-- <div class="row" id="row2">
             <div class="col-sm-3">
                 <div class="card" id="game5">
