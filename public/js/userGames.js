@@ -22,18 +22,12 @@ loadUserGames();
         userId: userId
       }
 
-
     $.get("api/usergames", data, function(userGames) {
       
       console.log(userGames);
       var userGamesToAdd = [];
       for (var i = 0; i < userGames.length; i++) {
         userGamesToAdd.push(createNewUserGamesRow(userGames[i]));
-
-        let userGameId = $(this).attr("userGamesId");
-        console.log('this is the user games Id', userGameId);
-        // $.post("/api/usergames/" + userGameId )
-        window.location.href = "/usergames/" + userGameId
       }
 
       console.log(userGamesToAdd[0]);
