@@ -2,13 +2,11 @@ require("dotenv").config();
 var express = require("express");
 var cors = require("cors");
 var exphbs = require("express-handlebars");
-var jwt = require("jsonwebtoken")
-var bcrypt = require("bcrypt")
+var jwt = require("jsonwebtoken");
+var bcrypt = require("bcrypt");
 var db = require("./models");
 var app = express();
-var PORT = process.env.PORT || 3000;
-
-
+var PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(express.urlencoded({ extended: false }));
@@ -25,13 +23,10 @@ app.engine(
 );
 app.set("view engine", "handlebars");
 
-
-
 // Routes
 require("./routes/userRoutes")(app);
 require("./routes/apiRoutes")(app);
 require("./routes/htmlRoutes")(app);
-
 
 // var Users = require("./models/User");
 // app.use("/users", Users);
