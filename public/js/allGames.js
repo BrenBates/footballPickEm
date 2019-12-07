@@ -92,15 +92,18 @@ $(document).ready(function () {
     //   newGameCard.data("games", games);
     //   return newGameCard;
     // }
-    let $button = document.querySelector('.button');
-
-    $button.addEventListener('click', function () {
-        let duration = 0.3;
-        let delay = 0.08;
-        TweenMax.to($button, duration, { scaleY: 1.6, ease: Expo.easeOut });
-        TweenMax.to($button, duration, { scaleX: 1.2, scaleY: 1, ease: Back.easeOut, easeParams: [3], delay: delay });
-        TweenMax.to($button, duration * 1.25, { scaleX: 1, scaleY: 1, ease: Back.easeOut, easeParams: [6], delay: delay * 3 });
-    });
+    //let $button = document.querySelector('.button');
+    let $buttons = document.getElementsByClassName("button");
+    
+    for(let button of $buttons) {
+      button.addEventListener('click', () => {
+          let duration = 0.3;
+          let delay = 0.08;
+          TweenMax.to(button, duration, { scaleY: 1.6, ease: Expo.easeOut });
+          TweenMax.to(button, duration, { scaleX: 1.2, scaleY: 1, ease: Back.easeOut, easeParams: [3], delay: delay });
+          TweenMax.to(button, duration * 1.25, { scaleX: 1, scaleY: 1, ease: Back.easeOut, easeParams: [6], delay: delay * 3 });
+      });      
+    };
 
     function renderEmpty() {
       var messageH2 = $("<div>");

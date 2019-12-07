@@ -72,24 +72,47 @@ var refreshExamples = function() {
 // Save the new example to the db and refresh the list
 var handleFormSubmit = function(event) {
   event.preventDefault();
-
   var example = {
     text: $exampleText.val().trim(),
     description: $exampleDescription.val().trim()
   };
-
   if (!(example.text && example.description)) {
     alert("You must enter an example text and description!");
     return;
   }
-
   API.saveExample(example).then(function() {
     refreshExamples();
   });
-
   $exampleText.val("");
   $exampleDescription.val("");
 };
+
+$(function () {
+  // Grab the template script
+  let theTemplateScript = $("#address-template").html();
+  let buttonTemplate = $(".button").html();
+
+  // Compile the template
+  let theTemplate = Handlebars.compile(theTemplateScript);
+  let template = Handlebars.compile(buttonTemplate);
+
+  // Define our data object
+  let context={
+    "city": "London",
+    "street": "Baker Street",
+    "number": "221B"
+  };
+  let content={
+  };
+
+  // Pass our data to the template
+  let theCompiledHtml = theTemplate(context);
+  let compiledBtn = template(content);
+
+  // Add the compiled html to the page
+  $('.content-placeholder').html(theCompiledHtml);
+  $('.games-container').html(compiledBtn);
+});
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list

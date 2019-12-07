@@ -57,7 +57,7 @@ th {
 }
 
 .button {
-  background: #3498db;
+  background: transparent;
   width: 180px;
   padding: 4px 0;
   position: absolute;
@@ -65,17 +65,30 @@ th {
   top: 50%;
   transform: translateX(-50%) translateY(-50%);
   border-radius: 3px;
-  p {
+}
+
+#teamlogo {
+  width: 100%;
+}
+
+.col {
+  float: left;
+  width: 33.33%;
+}
+
+  /* p {
     font-family: 'Roboto';
     text-align: center;
     text-transform: uppercase;
     color: #FFF;
     user-select: none;
-  }
-  &:hover {
+  } */
+
+  .button:hover {
     cursor: pointer;
   }
-  &:after {
+  
+  .button:after {
     content: "";
     display: block;
     position: absolute;
@@ -86,4 +99,3 @@ th {
     opacity: 0.4;
     bottom: -30px;
   }
-}
