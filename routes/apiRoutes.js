@@ -8,12 +8,9 @@ module.exports = function(app) {
       res.json(dbGames);
     });
   });
-
    // Get all usergame examples
    app.get("/api/usergames", function(req, res) {
-     
     let userId = req.query.userId;
-    
     db.usergames.findAll({
       where: {
         userId: userId
@@ -22,9 +19,6 @@ module.exports = function(app) {
       res.json(dbUserGames);
     });
   });
-
- 
-
   // app.post("/api/usergames/:usergameid", function(req,res) {
   //   let userGameId = req.params.usergameid
   //   console.log("this is the user game id: ")
@@ -34,7 +28,6 @@ module.exports = function(app) {
   //       userGameId: req.params.usergameid
   //     }
   //   }).then(function(dbUGI) {
-
   app.post("/api/games", function(req, res) {
     var queryUrl = "https://feeds.nfl.com/feeds-rs/scores.json";
     axios
@@ -114,43 +107,65 @@ module.exports = function(app) {
         res.status(500);
       });
   });
-
+  app.post("/api/refresh", function(req, res) {
+    console.log(req);
+    let nflID = req.body.nflID
+    console.log("nfl game id for axios call: " + nflID);
+    let queryUrl = "http://www.nfl.com/liveupdate/game-center/" + nflID + "/" + nflID + "_gtd.json";
+    console.log(queryUrl);
+    axios
+      .get(queryUrl)
+        .then(function(response) {
+          console.log(response.data[nflID].home.score);
+          let refreshObj = {
+            firstQsHome: response.data[nflID].home.score[1],
+            secondQsHome: response.data[nflID].home.score[2],
+            thirdQsHome: response.data[nflID].home.score[3],
+            forthQsHome: response.data[nflID].home.score[4],
+            finalScoreHome: response.data[nflID].home.score.T,
+            firstQsAway: response.data[nflID].away.score[1],
+            secondQsAway: response.data[nflID].away.score[2],
+            thirdQsAway: response.data[nflID].away.score[3],
+            forthQsAway: response.data[nflID].away.score[4],
+            finalScoreAway: response.data[nflID].away.score.T
+          }
+          console.log(refreshObj);
+          db.usergames.update(refreshObj, {
+            where: {
+              nflGameId: req.body.nflID
+            }
+          }).then(function(dbRefresh) {
+            res.json(dbRefresh)
+          })
+        })
+  })
   app.post("/api/usergames", function(req,res) {
-
     let userId = req.body.userId
     let nflGameId = req.body.nflGameId
-
     // function to shuffle array of numbers to assign them randomly to the columns and rows for the game
     function shuffle(array) {
       var currentIndex = array.length,
           temporaryValue, randomIndex;
-  
       // While there remain elements to shuffle...
       while (0 !== currentIndex) {
-  
           // Pick a remaining element...
           randomIndex = Math.floor(Math.random() * currentIndex);
           currentIndex -= 1;
-  
           // And swap it with the current element.
           temporaryValue = array[currentIndex];
           array[currentIndex] = array[randomIndex];
           array[randomIndex] = temporaryValue;
       }
-  
       return array;
   }
     let randomColumn = shuffle([0, 1, 2 ,3, 4, 5, 6, 7, 8, 9]);
     let randomRow = shuffle([0, 1, 2 ,3, 4, 5, 6, 7, 8, 9]);
-   
-
     db.games.findOne({
       where: {
         gameId: nflGameId
       }
     }).then(function(dbGames) {
       // console.log(dbGames)
-  
       let userWeek = dbGames.dataValues.week;
       let userHomeTeam = dbGames.dataValues.homeTeam;
       let userAwayTeam = dbGames.dataValues.awayTeam;
@@ -162,10 +177,7 @@ module.exports = function(app) {
       let userSecondQsAway = dbGames.dataValues.secondQsAway;
       let userThirdQsAway = dbGames.dataValues.thirdQsAway;
       let userForthQsAway = dbGames.dataValues.forthQsAway;
-    
-
     var userGameObj = {
-  
     userId: userId,
     nflGameId: nflGameId,
     week: userWeek,
@@ -200,23 +212,17 @@ module.exports = function(app) {
     nine: randomRow[8],
     ten: randomRow[9]
   }
-
   var userGameInstanceObj = {
     userId: userId,
     nflGameId: nflGameId
   }
-
   console.log(userGameInstanceObj)
-  
-
   //create usergames table entry and create usergameinstance table entry with the same id 
   db.usergames.create(userGameObj);
   db.usergameinstances.create(userGameInstanceObj);
 })
   })
-
   app.post("/api/userinstances", function(req,res) {
-
     var instanceObj = {
       // userGameId: req.body.userGameId,
       // userId: req.body.userId,
@@ -330,7 +336,5 @@ module.exports = function(app) {
     }).then(function(dbInstance) {
       res.json(dbInstance)
     })
-  })
-  
-  
+  }) 
 };
