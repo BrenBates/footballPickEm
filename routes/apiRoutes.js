@@ -115,6 +115,40 @@ module.exports = function(app) {
       });
   });
 
+  app.post("/api/refresh", function(req, res) {
+    console.log(req);
+    let nflID = req.body.nflID
+    console.log("nfl game id for axios call: " + nflID);
+    let queryUrl = "http://www.nfl.com/liveupdate/game-center/" + nflID + "/" + nflID + "_gtd.json";
+    console.log(queryUrl);
+    axios
+      .get(queryUrl)
+        .then(function(response) {
+          console.log(response.data[nflID].home.score);
+
+          let refreshObj = {
+            firstQsHome: response.data[nflID].home.score[1],
+            secondQsHome: response.data[nflID].home.score[2],
+            thirdQsHome: response.data[nflID].home.score[3],
+            forthQsHome: response.data[nflID].home.score[4],
+            finalScoreHome: response.data[nflID].home.score.T,
+            firstQsAway: response.data[nflID].away.score[1],
+            secondQsAway: response.data[nflID].away.score[2],
+            thirdQsAway: response.data[nflID].away.score[3],
+            forthQsAway: response.data[nflID].away.score[4],
+            finalScoreAway: response.data[nflID].away.score.T
+          }
+          console.log(refreshObj);
+          db.usergames.update(refreshObj, {
+            where: {
+              nflGameId: req.body.nflID
+            }
+          }).then(function(dbRefresh) {
+            res.json(dbRefresh)
+          })
+        })
+  })
+
   app.post("/api/usergames", function(req,res) {
 
     let userId = req.body.userId
@@ -331,6 +365,8 @@ module.exports = function(app) {
       res.json(dbInstance)
     })
   })
+
+  
   
   
 };
