@@ -36,7 +36,6 @@ module.exports = function(app) {
   //   }).then(function(dbUGI) {
 
 
-
   app.post("/api/games", function(req, res) {
     var queryUrl = "https://feeds.nfl.com/feeds-rs/scores.json";
     axios
