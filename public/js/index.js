@@ -202,12 +202,13 @@ var handleSignUp = function(event) {
 };
 
 var handleViewTeams = function(event) {
+  $.post("/api/games");
   document.location.href = '/viewteams'
 }
 
 var handleViewGames = function(event) {
 
-  $.post("/api/games");
+  
 
   document.location.href = '/viewgames'
 
