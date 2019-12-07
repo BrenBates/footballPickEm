@@ -14,8 +14,8 @@ RJ Pupunu, Colin Reesor, Xander Canedo, Brennen Bates
 HTML, CSS, Bootstrap, Javascript, Jquery, Handlebars, MySQL, Sequelized, Heroku, JawsDB, MVC, Axios
 
 ## New Javascript Libraries: 
-JSON Web Token (jwt) - used for user authentication
-bcrypt - used to encrypt passwords when saving user data
+1. JSON Web Token (jwt) - used for user authentication
+2. BCRYPT - used to encrypt passwords when saving user data
 
 ## APIs used:
 NFL Game Data:
