@@ -67,6 +67,7 @@ app.post('/login', (req,res) => {
             if (bcrypt.compareSync(req.body.password, user.password)) {
                 let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
                     expiresIn: 99999999
+
                 })
                console.log(token)
                 res.json({ token: token })

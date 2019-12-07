@@ -12,6 +12,16 @@ var $exampleList = $("#example-list");
 var loggedInLinks = document.querySelectorAll('.logged-in');
 var loggedOutLinks= document.querySelectorAll('.logged-out');
 
+var $b2 = $("#b2");
+
+
+if(sessionStorage.getItem('jwt')){
+  if(sessionStorage.getItem('jwt') !== undefined){
+    loggedOutLinks.forEach(item => item.style.display = 'none');
+      loggedInLinks.forEach(item => item.style.display = 'block');
+    }
+}
+
 
 // The API object contains methods for each kind of request we'll make
 var API = {
@@ -74,8 +84,10 @@ var handleFormSubmit = function(event) {
   event.preventDefault();
   var example = {
     text: $exampleText.val().trim(),
-    description: $exampleDescription.val().trim()
+    description: $exampleDescription.val().trim(),
+    test: $b2.val().trim()
   };
+  console.log("test should be " + $b2.val().trim())
   if (!(example.text && example.description)) {
     alert("You must enter an example text and description!");
     return;
@@ -85,6 +97,7 @@ var handleFormSubmit = function(event) {
   });
   $exampleText.val("");
   $exampleDescription.val("");
+  $b2.val("");
 };
 
 $(function () {
@@ -157,11 +170,11 @@ var handleLogIn = function(event) {
     logInForm.reset();
 
   $.post("/login", handShake).then( function(response) {
-    console.log("log in succcessful");
+    
     userToken = response.token;
     sessionStorage.setItem('jwt', userToken);
 
-    if(userToken !== null) {
+    if(userToken !== undefined) {
       loggedOutLinks.forEach(item => item.style.display = 'none');
       loggedInLinks.forEach(item => item.style.display = 'block');
     }
@@ -217,15 +230,21 @@ var handleSignUp = function(event) {
 };
 
 var handleViewTeams = function(event) {
+
+  $.post("/api/games");
   document.location.href = '/viewteams'
 }
 
-handleViewGames = function(event) {
+var handleViewGames = function(event) {
 
-  $.post("/api/games");
+  
 
   document.location.href = '/viewgames'
 
+}
+
+var handleSelectTeams = function(event) {
+  console.log('hello world')  
 }
 
 
@@ -240,4 +259,3 @@ $signUpBtn.on("click", handleSignUp);
 $viewTeamsBtn.on("click", handleViewTeams);
 $viewGamesBtn.on("click", handleViewGames);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
-
