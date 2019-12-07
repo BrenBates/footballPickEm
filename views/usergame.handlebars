@@ -41,7 +41,8 @@
 <form>
 
 <div class="clearfix">
-<button id="refresh" datauserid={{ug.userId}} datausergameid={{ug.userGameId}} datanflgameid={{ug.nflGameId}} class="btn btn-primary float-right">Refresh/Calculate</button>
+<button id="refresh" datauserid={{ug.userId}} datausergameid={{ug.userGameId}} datanflgameid={{ug.nflGameId}} class="btn btn-primary float-right">Save</button>
+<button id="update" datauserid={{ug.userId}} datausergameid={{ug.userGameId}} datanflgameid={{ug.nflGameId}} class="btn btn-primary float-right">Update Scores</button>
 </div>  
 <br>
 
@@ -374,6 +375,16 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <script type="text/javascript">
+$(document).on("click", "#update", function() {
+  event.preventDefault();
+  console.log('update button has been pushed');
+  let nflgameID = {
+   nflID: $(this).attr("datanflgameid")
+  }
+  console.log(nflgameID);
+  $.post("/api/refresh", nflgameID);
+})
+
  $(document).on("click", "#refresh", function() {
     event.preventDefault();
     console.log('hello world')
