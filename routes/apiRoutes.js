@@ -136,7 +136,13 @@ module.exports = function(app) {
             secondQsAway: response.data[nflID].away.score[2],
             thirdQsAway: response.data[nflID].away.score[3],
             forthQsAway: response.data[nflID].away.score[4],
-            finalScoreAway: response.data[nflID].away.score.T
+            finalScoreAway: response.data[nflID].away.score.T,
+            clock: response.data[nflID].clock,
+            currentQtr: response.data[nflID].qtr,
+            down: response.data[nflID].down,
+            yrdsTogo: response.data[nflID].togo,
+            positionTeam: response.data[nflID].posteam,
+            currentYrdLine: response.data[nflID].yl
           }
           console.log(refreshObj);
           db.usergames.update(refreshObj, {
@@ -192,10 +198,15 @@ module.exports = function(app) {
       let userSecondQsHome = dbGames.dataValues.secondQsHome;
       let userThirdQsHome = dbGames.dataValues.thirdQsHome;
       let userForthQsHome = dbGames.dataValues.forthQsHome;
+      let userFinalScoreHome = dbGames.dataValues.finalScoreHome;
       let userFirstQsAway = dbGames.dataValues.firstQsAway;
       let userSecondQsAway = dbGames.dataValues.secondQsAway;
       let userThirdQsAway = dbGames.dataValues.thirdQsAway;
       let userForthQsAway = dbGames.dataValues.forthQsAway;
+      let userFinalScoreAway = dbGames.dataValues.finaLScoreAway;
+
+      console.log("User final score home:" + userFinalScoreHome);
+      console.log("User final score: " + userFinalScoreAway);
     
 
     var userGameObj = {
@@ -209,10 +220,12 @@ module.exports = function(app) {
     secondQsHome: userSecondQsHome,
     thirdQsHome: userThirdQsHome,
     forthQsHome: userForthQsHome,
+    finalScoreHome: userFinalScoreHome,
     firstQsAway: userFirstQsAway,
     secondQsAway: userSecondQsAway,
     thirdQsAway: userThirdQsAway,
     forthQsAway: userForthQsAway,
+    // finalScoreAway: userFinalScoreAway,
     a: randomColumn[0],
     b: randomColumn[1],
     c: randomColumn[2],
@@ -364,9 +377,6 @@ module.exports = function(app) {
     }).then(function(dbInstance) {
       res.json(dbInstance)
     })
-  })
-
-  
-  
+  }) 
   
 };

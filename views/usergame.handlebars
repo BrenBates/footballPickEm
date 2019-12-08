@@ -8,6 +8,7 @@
     <th>Q2</th>
     <th>Q3</th>
     <th>Q4</th>
+    <th>Final</th>
   </tr>
   <tr>
     <td>{{ug.homeTeam}}</td>
@@ -15,6 +16,7 @@
     <td>{{ug.secondQsHome}}</td>
     <td>{{ug.thirdQsHome}} </td>
     <td>{{ug.forthQsHome}}</td>
+    <td>{{us.finalScoreHome}}</td>
   </tr>
   <tr>
     <td>{{ug.awayTeam}}</td>
@@ -22,10 +24,26 @@
     <td>{{ug.secondQsAway}}</td>
     <td>{{ug.thirdQsAway}}</td>
     <td>{{ug.forthQsAway}}</td>
+    <td>{{us.finalScoreAway}}</td>
   </tr>
 </table>
 <br>
+<table style="width:75%">
+  <tr>
+    <th>{{ug.homeTeam}} {{ug.finalScoreHome}}</th>
+    <th>{{ug.awayTeam}} {{ug.finalScoreAway}}</th>
+    <th>{{ug.currentQTR}} {{ug.clock}}</th>
+    <th>{{ug.positionTeam}} Ball on the {{ug.currentYrdLine}}</th>
+    <th>{{ug.down}} DOWN and {{ug.yrdsTogo}}</th>
 
+  </tr>
+</table>
+<br>
+<div class="clearfix">
+  <P class="currentGameData_time">{{ug.currentQtr}} QTR {{ug.clock}}</P>
+  <P class="currentGameData_posTeam">{{ug.posTeam}} Ball on {{currentYrdLine}}</P>
+  <p class="currentGameData_down">{{ug.down}} DOWN and {{us.yrdsTogo}}</p>
+</div>
  {{!-- <form class="clearfix mb-4" action="POST">
           <div class="form-group">
             <label for="example-text">Example Text</label>
@@ -375,6 +393,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <script type="text/javascript">
+function reloadPage () {
+  location.reload(true);
+}
 $(document).on("click", "#update", function() {
   event.preventDefault();
   console.log('update button has been pushed');
@@ -383,6 +404,8 @@ $(document).on("click", "#update", function() {
   }
   console.log(nflgameID);
   $.post("/api/refresh", nflgameID);
+  location.reload(true);
+
 })
 
  $(document).on("click", "#refresh", function() {
