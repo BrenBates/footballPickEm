@@ -198,10 +198,15 @@ module.exports = function(app) {
       let userSecondQsHome = dbGames.dataValues.secondQsHome;
       let userThirdQsHome = dbGames.dataValues.thirdQsHome;
       let userForthQsHome = dbGames.dataValues.forthQsHome;
+      let userFinalScoreHome = dbGames.dataValues.finalScoreHome;
       let userFirstQsAway = dbGames.dataValues.firstQsAway;
       let userSecondQsAway = dbGames.dataValues.secondQsAway;
       let userThirdQsAway = dbGames.dataValues.thirdQsAway;
       let userForthQsAway = dbGames.dataValues.forthQsAway;
+      let userFinalScoreAway = dbGames.dataValues.finaLScoreAway;
+
+      console.log("User final score home:" + userFinalScoreHome);
+      console.log("User final score: " + userFinalScoreAway);
     
 
     var userGameObj = {
@@ -215,10 +220,12 @@ module.exports = function(app) {
     secondQsHome: userSecondQsHome,
     thirdQsHome: userThirdQsHome,
     forthQsHome: userForthQsHome,
+    finalScoreHome: userFinalScoreHome,
     firstQsAway: userFirstQsAway,
     secondQsAway: userSecondQsAway,
     thirdQsAway: userThirdQsAway,
     forthQsAway: userForthQsAway,
+    // finalScoreAway: userFinalScoreAway,
     a: randomColumn[0],
     b: randomColumn[1],
     c: randomColumn[2],

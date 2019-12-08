@@ -32,6 +32,9 @@ module.exports = function(sequelize, DataTypes) {
     forthQsHome: {
       type: DataTypes.INTEGER
     },
+    finalScoreHome: {
+      type: DataTypes.INTEGER
+    },
     firstQsAway: {
       type: DataTypes.INTEGER
     },
@@ -42,6 +45,9 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER
     },
     forthQsAway: {
+      type: DataTypes.INTEGER
+    },
+    finalScoreAway: {
       type: DataTypes.INTEGER
     },
     clock: {
