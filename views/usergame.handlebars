@@ -1,48 +1,51 @@
 <a href="/">← Back To Home</a>
  
-
-<table style="width:100%">
-  <tr>
-    <th>Teams</th>
-    <th>Q1</th> 
-    <th>Q2</th>
-    <th>Q3</th>
-    <th>Q4</th>
-    <th>Final</th>
-  </tr>
-  <tr>
-    <td>{{ug.homeTeam}}</td>
-    <td>{{ug.firstQsHome}}</td>
-    <td>{{ug.secondQsHome}}</td>
-    <td>{{ug.thirdQsHome}} </td>
-    <td>{{ug.forthQsHome}}</td>
-    <td>{{us.finalScoreHome}}</td>
-  </tr>
-  <tr>
-    <td>{{ug.awayTeam}}</td>
-    <td>{{ug.firstQsAway}}</td>
-    <td>{{ug.secondQsAway}}</td>
-    <td>{{ug.thirdQsAway}}</td>
-    <td>{{ug.forthQsAway}}</td>
-    <td>{{us.finalScoreAway}}</td>
-  </tr>
-</table>
+<div class="container">
+  <table style="width:100%">
+    <tr>
+      <th>Teams</th>
+      <th>Q1</th> 
+      <th>Q2</th>
+      <th>Q3</th>
+      <th>Q4</th>
+      <th>Final</th>
+    </tr>
+    <tr>
+      <td>{{ug.homeTeam}}</td>
+      <td>{{ug.firstQsHome}}</td>
+      <td>{{ug.secondQsHome}}</td>
+      <td>{{ug.thirdQsHome}} </td>
+      <td>{{ug.forthQsHome}}</td>
+      <td>{{us.finalScoreHome}}</td>
+    </tr>
+    <tr>
+      <td>{{ug.awayTeam}}</td>
+      <td>{{ug.firstQsAway}}</td>
+      <td>{{ug.secondQsAway}}</td>
+      <td>{{ug.thirdQsAway}}</td>
+      <td>{{ug.forthQsAway}}</td>
+      <td>{{us.finalScoreAway}}</td>
+    </tr>
+  </table>
+</div>
 <br>
-<table style="width:75%">
-  <tr>
-    <th>{{ug.homeTeam}} {{ug.finalScoreHome}}</th>
-    <th>{{ug.awayTeam}} {{ug.finalScoreAway}}</th>
-    <th>{{ug.currentQTR}} {{ug.clock}}</th>
-    <th>{{ug.positionTeam}} Ball on the {{ug.currentYrdLine}}</th>
-    <th>{{ug.down}} DOWN and {{ug.yrdsTogo}}</th>
+<div class="container">
+  <table style="width:75%">
+    <tr>
+      <td>{{ug.homeTeam}} {{ug.finalScoreHome}}</td>
+      <td>{{ug.awayTeam}} {{ug.finalScoreAway}}</td>
+      <td>{{ug.currentQTR}} {{ug.clock}}</td>
+      <td>{{ug.positionTeam}} Ball on the {{ug.currentYrdLine}}</td>
+      <td>{{ug.down}} DOWN and {{ug.yrdsTogo}}</td>
 
-  </tr>
-</table>
-<br>
-<div class="clearfix">
-  <P class="currentGameData_time">{{ug.currentQtr}} QTR {{ug.clock}}</P>
-  <P class="currentGameData_posTeam">{{ug.posTeam}} Ball on {{currentYrdLine}}</P>
-  <p class="currentGameData_down">{{ug.down}} DOWN and {{us.yrdsTogo}}</p>
+    </tr>
+  </table>
+  <br>
+  {{!-- <div class="clearfix">
+    <P class="currentGameData_time">{{ug.currentQtr}} QTR {{ug.clock}}</P>
+    <P class="currentGameData_posTeam">{{ug.posTeam}} Ball on {{currentYrdLine}}</P>
+    <p class="currentGameData_down">{{ug.down}} DOWN and {{us.yrdsTogo}}</p>
+  </div> --}}
 </div>
  {{!-- <form class="clearfix mb-4" action="POST">
           <div class="form-group">
@@ -60,6 +63,7 @@
 
 <div class="clearfix">
 <button id="refresh" datauserid={{ug.userId}} datausergameid={{ug.userGameId}} datanflgameid={{ug.nflGameId}} class="btn btn-primary float-right">Save</button>
+&nbsp;
 <button id="update" datauserid={{ug.userId}} datausergameid={{ug.userGameId}} datanflgameid={{ug.nflGameId}} class="btn btn-primary float-right">Update Scores</button>
 </div>  
 <br>

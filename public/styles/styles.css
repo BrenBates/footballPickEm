@@ -12,6 +12,12 @@ body {
   padding: 1em 0;
 }
 
+.card {
+  display: inline-block !important;
+  margin: 8px !important;
+
+}
+
 .grid {
   /* Grid Fallback */
   display: flex;
@@ -40,6 +46,18 @@ body {
   .module {
     margin: 0;
   }
+}
+.btn {
+  margin-left: 5px;
+}
+.divider {
+  width:5px;
+  height:auto;
+  display:inline-block;
+}
+
+table {
+  margin: auto;
 }
 table, th, td {
   border: 1px solid black;

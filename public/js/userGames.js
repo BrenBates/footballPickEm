@@ -39,6 +39,8 @@ loadUserGames();
 
     // Function to construct a post's HTML
     function createNewUserGamesRow(userGames) {
+      var newUserCardDiv = $("<div>")
+      newUserCardDiv.addClass("col-sm-3");
       var newUserGameCard = $("<div>");
       newUserGameCard.addClass("card");
       var newUserGameCardHeading = $("<div>");
@@ -62,8 +64,9 @@ loadUserGames();
       newUserGameCardBody.append(newUserAwayTeamBody);
       newUserGameCardBody.append(newUserHomeTeamBody);
       newUserGameCard.append(newUserGameCardBody);
+      newUserCardDiv.append(newUserGameCard);
       newUserGameCard.data("games", userGames);
-      return newUserGameCard;
+      return newUserGameDiv;
     }
 
   //   function renderEmpty() {
