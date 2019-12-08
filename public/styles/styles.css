@@ -52,10 +52,10 @@ th {
   text-align: left;
 }
 
-.container {
+/* .container {
   width: 100%;
   overflow: auto;
-}
+} */
 
 .button {
   background: blue;
