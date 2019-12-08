@@ -10,6 +10,30 @@ body {
   margin: 0 auto;
   max-width: 56em;
   padding: 1em 0;
+  /* background-position: center center no-repeat;
+  background-attachment: fixed;
+  background-image: url(/images/nfl-1-logo-png-transparent.png); */
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+
+.indeximage {
+  width: 690px;
+}
+
+h1 {
+  text-align: center;
+}
+
+.card {
+  display: inline-block !important;
+  margin: 8px !important;
+}
+
+.card-header {
+  margin-bottom: 8px;
 }
 
 .grid {
@@ -40,6 +64,18 @@ body {
   .module {
     margin: 0;
   }
+}
+.btn {
+  margin-left: 5px;
+}
+.divider {
+  width:5px;
+  height:auto;
+  display:inline-block;
+}
+
+table {
+  margin: auto;
 }
 table, th, td {
   border: 1px solid black;
