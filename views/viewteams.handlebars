@@ -1,21 +1,7 @@
-{{!-- <!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="UTF-8">
-	<title>View Team Matchups</title>
-	<!-- Latest compiled and minified CSS & JS -->
-	<link href="https://maxcdn.bootstrapcdn.com/bootswatch/4.0.0/flatly/bootstrap.min.css" rel="stylesheet">
-	<link rel="stylesheet" href="css/styles.css" media="screen" title="no title">
-	<script src="https://code.jquery.com/jquery.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-</head> --}}
-
-{{!-- <body> --}}
 <div class="container">
     <div class="row mt-4">
         <div class="col-md-12">
-        <button class="btn btn-primary float-right" href="/">Home</button>
+        <a class="btn btn-primary float-right" href="/">Home</a>
         <a class="btn btn-primary float-right" href="/viewgames">View Your Current Games</a>
         </div>
     </div>
@@ -43,7 +29,7 @@
       
         <!-- body -->
         <div>
-          <p>You have created a new game!  Click on View Your Current Games to continue.</p>
+          <p class="newGameModal">You have created a new game!  Click on View Your Current Games to continue.</p>
         </div>
         <!-- footer -->
         <div class="modal-footer">
@@ -60,8 +46,4 @@
 <!-- Custom Script -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="js/allGames.js" type="text/javascript"></script>
-{{!-- <script src="js/index.js" type="text/javascript"></script> --}}
-
-{{!-- </body>
-
-</html> --}}
+<script src="js/index.js" type="text/javascript"></script>

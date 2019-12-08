@@ -1,4 +1,14 @@
-<a href="/">← Back To Home</a>
+{{!-- <a href="/">← Back To Home</a> --}}
+<div class="container">
+    <div class="row mt-4">
+        <div class="col-md-12">
+        <a class="btn btn-primary float-right" href="/">Home</a>
+        <a class="btn btn-primary float-right" href="/viewgames">View Your Current Games</a>
+        <a class="btn btn-primary float-right" href="/viewteams">View Current Matchups</a>
+        </div>
+    </div>
+</div> 
+<br>
  
 <div class="container">
   <table style="width:100%">
@@ -414,7 +424,7 @@ $(document).on("click", "#update", function() {
 
  $(document).on("click", "#refresh", function() {
     event.preventDefault();
-    console.log('hello world')
+    console.log('Save Button Clicked: usergameinstance table entry created')
     let instanceData = {
       userGameId: $(this).attr("datausergameid"),
       userId: $(this).attr("datauserid"),
@@ -553,9 +563,7 @@ $(document).on("click", "#update", function() {
       J9: $("#J9").val().trim(),
       J10: $("#J10").val().trim(),
     }
-
-
-
+ 
 
     console.log(instanceData);
     $.post("/api/userinstances", instanceData)

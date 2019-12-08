@@ -33,40 +33,41 @@ loadUserGames();
       console.log(userGamesToAdd[0]);
       createNewUserGamesRow(userGamesToAdd);
       userGamesContainer.append(userGamesToAdd);
+      
     });
   })
   }
 
     // Function to construct a post's HTML
     function createNewUserGamesRow(userGames) {
-      var newUserCardDiv = $("<div>")
-      newUserCardDiv.addClass("col-sm-3");
       var newUserGameCard = $("<div>");
       newUserGameCard.addClass("card");
       var newUserGameCardHeading = $("<div>");
       newUserGameCardHeading.addClass("card-header");
       var newUserGameCardBody = $("<div>");
       newUserGameCardBody.addClass("card-body");
-      var newUserHomeTeamBody = $("<h5>");
-      var newUserAwayTeamBody = $("<h5>");
-      var newUserWeekBody = $("<h5>");
+      var newUserHomeTeamBody = $("<h6>");
+      var newUserBodyVs = $("<p>");
+      var newUserAwayTeamBody = $("<h6>");
+      var newUserWeekBody = $("<h6>");
       var userSelectBtn = $("<button>");
       userSelectBtn.addClass("select btn btn-default");
       userSelectBtn.attr('userGamesId',userGames.userGameId);
-      newUserGameCardHeading.text(userGames.gameId);
-      newUserHomeTeamBody.text("Home Team: " + userGames.homeTeam);
-      newUserAwayTeamBody.text("Away Team: " +userGames.awayTeam);
-      newUserWeekBody.text("Week: " +userGames.week);
+      newUserGameCardHeading.text("Week: " + userGames.week);
+      newUserHomeTeamBody.text(userGames.homeTeam + ": " + userGames.finalScoreHome);
+      newUserBodyVs.text("vs.");
+      newUserAwayTeamBody.text(userGames.awayTeam + ": " + userGames.finalScoreAway);
+      // newUserWeekBody.text("Week: " +userGames.week);
       userSelectBtn.text("Select");
       newUserGameCardBody.append(newUserGameCardHeading);
-      newUserGameCardBody.append(userSelectBtn);
       newUserGameCardBody.append(newUserWeekBody);
       newUserGameCardBody.append(newUserAwayTeamBody);
+      newUserGameCardBody.append(newUserWeekBody);
       newUserGameCardBody.append(newUserHomeTeamBody);
+      newUserGameCardBody.append(userSelectBtn);
       newUserGameCard.append(newUserGameCardBody);
-      newUserCardDiv.append(newUserGameCard);
       newUserGameCard.data("games", userGames);
-      return newUserGameDiv;
+      return newUserGameCard;
     }
 
   //   function renderEmpty() {
@@ -80,11 +81,25 @@ loadUserGames();
     let handleUserGame = function() {
 
       let userGameId = $(this).attr("userGamesId");
-      console.log('this is the user games Id', userGameId);
-      // $.post("/api/usergames/" + userGameId )
+      console.log('WTF IS this is the user games Id', userGameId);
+      var number = firstQsHome;
+      var lastdigit = number.toString().split('').pop();
+      console.log("Last Digit: " + lastdigit);
+      
+
+      $.post("/api/refresh/" + userGameId );
       window.location.href = "/usergames/" + userGameId
+      
     }
 
     $(document).on("click", ".select", handleUserGame);
+
+    function getLastDigitScore() {
+      var number = userGames.firstQsHome;
+      var lastdigit = number.toString().split('').pop();
+      console.log(lastdigit);
+      return lastdigit;
+    }
+
  
 });

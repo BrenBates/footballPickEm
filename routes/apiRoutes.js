@@ -37,16 +37,19 @@ module.exports = function(app) {
 
   app.post("/api/games", function(req, res) {
     var queryUrl = "https://feeds.nfl.com/feeds-rs/scores.json";
+    console.log("API URL: " + queryUrl);
     axios
       .get(queryUrl)
       .then(function(response) {
-        console.log(response);
+        console.log(response.data);
         for (let i = 0; i < response.data.gameScores.length; i++) {
           let currentWeek = response.data.week;
           console.log(currentWeek);
           if(response.data.gameScores[i].score === null){
             var tempObj = {
               gameId: response.data.gameScores[i].gameSchedule.gameId,
+              gameDate: response.data.gameScores[i].gameSchedule.gameDate,
+              gameTime: response.data.gameScores[i].gameSchedule.gameTimeLocal,
               week: response.data.week,
               homeTeam: response.data.gameScores[i].gameSchedule.homeTeam.fullName,
               firstQsHome: null,
@@ -66,6 +69,8 @@ module.exports = function(app) {
           var tempObj = {
             gameId: response.data.gameScores[i].gameSchedule.gameId,
             week: response.data.week,
+            gameDate: response.data.gameScores[i].gameSchedule.gameDate,
+            gameTime: response.data.gameScores[i].gameSchedule.gameTimeLocal,
             homeTeam: response.data.gameScores[i].gameSchedule.homeTeam.fullName,
             firstQsHome: response.data.gameScores[i].score.homeTeamScore.pointQ1,
             secondQsHome: response.data.gameScores[i].score.homeTeamScore.pointQ2,
@@ -116,7 +121,7 @@ module.exports = function(app) {
   });
 
   app.post("/api/refresh", function(req, res) {
-    console.log(req);
+    // console.log(req);
     let nflID = req.body.nflID
     console.log("nfl game id for axios call: " + nflID);
     let queryUrl = "http://www.nfl.com/liveupdate/game-center/" + nflID + "/" + nflID + "_gtd.json";
@@ -124,7 +129,7 @@ module.exports = function(app) {
     axios
       .get(queryUrl)
         .then(function(response) {
-          console.log(response.data[nflID].home.score);
+          // console.log(response.data[nflID].home.score);
 
           let refreshObj = {
             firstQsHome: response.data[nflID].home.score[1],
@@ -144,7 +149,7 @@ module.exports = function(app) {
             positionTeam: response.data[nflID].posteam,
             currentYrdLine: response.data[nflID].yl
           }
-          console.log(refreshObj);
+          // console.log(refreshObj);
           db.usergames.update(refreshObj, {
             where: {
               nflGameId: req.body.nflID
