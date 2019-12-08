@@ -149,26 +149,24 @@ $(document).ready(function () {
     };
   }
 
-  // <div class="col-md-2">
+  // <div class="row">
+  //   <div class="col">
   //     <div class="button">
   //         <div class="col">
   //             <img id="teamlogo" src="./images/AZ.png" alt="Arizona Cardinals">
-  //         </div>
-  //         <div class="col">
   //             AT
-  //         </div>
-  //         <div class="col">
   //             <img id="teamlogo" src="./images/LAR.png" alt="LA Rams">
   //         </div>
   //     </div>
+  //   </div>
   // </div>
 
   // Function to construct a post's HTML
   function createNewRow(games) {
-    //let newColumn = $('<div>').addClass('col');
+    let newColumn = $('<div>').addClass('col');
     let newButton = $('<div>').addClass('button');
     let firstColumn = $('<div>').addClass('col');
-    let secondColumn = $('<div>').addClass('col');
+    // let secondColumn = $('<div>').addClass('col');
     let thirdColumn = $('<div>').addClass('col');
     let awayImage = $('<img>').attr('id', 'teamlogo');
     let homeImage = $('<img>').attr('id', 'teamlogo');
@@ -176,21 +174,17 @@ $(document).ready(function () {
     awayImage.attr('alt', games.awayTeam);
     homeImage.attr('src', whichTeamImage(games.homeTeam));
     homeImage.attr('alt', games.homeTeam);
-    firstColumn.append(homeImage);
-    secondColumn.append("AT");
-    thirdColumn.append(awayImage);
-    newButton.addClass('col-md-4');
+    firstColumn.append(awayImage);
+    // secondColumn.append("AT");
+    thirdColumn.append(homeImage);
     newButton.append(firstColumn);
-    newButton.append(secondColumn);
+    newButton.append("AT");
+    // newButton.append(secondColumn);
     newButton.append(thirdColumn);
-    //newColumn.append(newButton);
+    newColumn.append(newButton);
     
-    console.log(newButton);
-    return newButton;
-  }
-
-  function teamButton() {
-
+    console.log(newColumn);
+    return newColumn;
   }
 
   function renderEmpty() {

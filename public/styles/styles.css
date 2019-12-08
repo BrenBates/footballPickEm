@@ -7,31 +7,23 @@
 }
 
 body {
-  margin: 0 auto;
-  max-width: 56em;
-  padding: 1em 0;
+  width: 100%;
 }
 
 .grid {
-  /* Grid Fallback */
   display: flex;
   flex-wrap: wrap;
-  
-  /* Supports Grid */
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(65px, 1fr));
   grid-auto-rows: minmax(5px, auto);
   grid-gap: 1em;
 }
 .module {
-  /* Demo-Specific Styles */
   background: #eaeaea;
   display: flex;
   align-items: center;
   justify-content: center;
   height: 65px;
-  
-  /* Flex Fallback */
   margin-left: 5px;
   margin-right: 5px;
   flex: 1 1 200px;
@@ -49,18 +41,18 @@ th, td {
   padding: 5px;
 }
 th {
-  text-align: left;
+  text-align: center;
 }
 
-/* .container {
+.container {
   width: 100%;
-  overflow: auto;
-} */
+}
 
 .button {
-  background: blue;
+  background: lightblue;
   padding: 4px 0;
   position: absolute;
+  width: 180px;
   float: left;
   transform: translateX(-50%) translateY(-50%);
   border-radius: 3px;
@@ -68,11 +60,6 @@ th {
 
 #teamlogo {
   width: 60px;
-}
-
-.col {
-  float: left;
-  width: 33.33%;
 }
 
 .button:hover {
