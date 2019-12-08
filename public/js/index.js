@@ -202,11 +202,12 @@ var handleSignUp = function(event) {
 };
 
 var handleViewTeams = function(event) {
+  console.log("handleViewTeams function ran via index.js")
   document.location.href = '/viewteams'
 }
 
 var handleViewGames = function(event) {
-
+  console.log('handleViewGames function ran via index.js')
   $.post("/api/games");
 
   document.location.href = '/viewgames'
@@ -214,7 +215,7 @@ var handleViewGames = function(event) {
 }
 
 var handleSelectTeams = function(event) {
-  console.log('hello world')  
+  console.log('handleSelectTeams function ran via index.js')  
 }
 
 

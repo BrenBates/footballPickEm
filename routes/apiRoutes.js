@@ -136,7 +136,13 @@ module.exports = function(app) {
             secondQsAway: response.data[nflID].away.score[2],
             thirdQsAway: response.data[nflID].away.score[3],
             forthQsAway: response.data[nflID].away.score[4],
-            finalScoreAway: response.data[nflID].away.score.T
+            finalScoreAway: response.data[nflID].away.score.T,
+            clock: response.data[nflID].clock,
+            currentQtr: response.data[nflID].qtr,
+            down: response.data[nflID].down,
+            yrdsTogo: response.data[nflID].togo,
+            positionTeam: response.data[nflID].posteam,
+            currentYrdLine: response.data[nflID].yl
           }
           console.log(refreshObj);
           db.usergames.update(refreshObj, {
@@ -364,9 +370,6 @@ module.exports = function(app) {
     }).then(function(dbInstance) {
       res.json(dbInstance)
     })
-  })
-
-  
-  
+  }) 
   
 };
