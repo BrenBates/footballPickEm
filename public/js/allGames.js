@@ -132,7 +132,7 @@ $(document).ready(function () {
       for (var i = 0; i < games.length; i++) {
         gamesToAdd.push(createNewRow(games[i]));
       }
-      createNewRow(gamesToAdd);
+      //createNewRow(gamesToAdd);
       gamesContainer.append(gamesToAdd);
     });
 
@@ -149,32 +149,44 @@ $(document).ready(function () {
     };
   }
 
-            // <div class="col-md-2">
-            //     <div class="button">
-            //         <div class="col">
-            //             <img id="teamlogo" src="./images/AZ.png" alt="Arizona Cardinals">
-            //         </div>
-            //         <div class="col">
-            //             AT
-            //         </div>
-            //         <div class="col">
-            //             <img id="teamlogo" src="./images/LAR.png" alt="LA Rams">
-            //         </div>
-            //     </div>
-            // </div>
+  // <div class="col-md-2">
+  //     <div class="button">
+  //         <div class="col">
+  //             <img id="teamlogo" src="./images/AZ.png" alt="Arizona Cardinals">
+  //         </div>
+  //         <div class="col">
+  //             AT
+  //         </div>
+  //         <div class="col">
+  //             <img id="teamlogo" src="./images/LAR.png" alt="LA Rams">
+  //         </div>
+  //     </div>
+  // </div>
 
   // Function to construct a post's HTML
   function createNewRow(games) {
-    let teamImgSrc = "";
-    let teamAlt = "";
-    let newColumn = $('<div>').addClass('col-md-2');
+    //let newColumn = $('<div>').addClass('col');
     let newButton = $('<div>').addClass('button');
-    let newButtonColumn = $('<div>').addClass('col');
-    let newImage = $('<img>').attr('id', 'teamlogo');
-    newImage.attr('src', whichTeamImage(games.homeTeam));
-    newImage.attr('alt', games.homeTeam);
-
-    return newColumn;
+    let firstColumn = $('<div>').addClass('col');
+    let secondColumn = $('<div>').addClass('col');
+    let thirdColumn = $('<div>').addClass('col');
+    let awayImage = $('<img>').attr('id', 'teamlogo');
+    let homeImage = $('<img>').attr('id', 'teamlogo');
+    awayImage.attr('src', whichTeamImage(games.awayTeam));
+    awayImage.attr('alt', games.awayTeam);
+    homeImage.attr('src', whichTeamImage(games.homeTeam));
+    homeImage.attr('alt', games.homeTeam);
+    firstColumn.append(homeImage);
+    secondColumn.append("AT");
+    thirdColumn.append(awayImage);
+    newButton.addClass('col-md-4');
+    newButton.append(firstColumn);
+    newButton.append(secondColumn);
+    newButton.append(thirdColumn);
+    //newColumn.append(newButton);
+    
+    console.log(newButton);
+    return newButton;
   }
 
   function teamButton() {
@@ -182,8 +194,8 @@ $(document).ready(function () {
   }
 
   function renderEmpty() {
-    var massageH2 = $("<div>");
-    massageH2.addClass("alert alert-danger");
+    var messageH2 = $("<div>");
+    messageH2.addClass("alert alert-danger");
     messageH2.css({ "text-align": "center", "margin-top": "50px" });
     messageH2.text("No games have yet to be seeded into the db.");
     gamesContainer.append(messageH2);
@@ -191,10 +203,7 @@ $(document).ready(function () {
 
   let handleSelectGame = function () {
     event.preventDefault();
-
     let nflGameId = $(this).attr("nflGameId");
-
-
 
     $.ajax({
       url: "/profile",

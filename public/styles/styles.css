@@ -1,11 +1,11 @@
+* {
+  box-sizing: border-box;
+}
+
 .list-group-item {
   line-height: 2.5;
 }
 
-/* a {
-  text-decoration: none;
-  color: white;
-} */
 body {
   margin: 0 auto;
   max-width: 56em;
@@ -52,13 +52,16 @@ th {
   text-align: left;
 }
 
+.container {
+  width: 100%;
+  overflow: auto;
+}
+
 .button {
-  background: transparent;
-  width: 180px;
+  background: blue;
   padding: 4px 0;
   position: absolute;
-  left: 50%;
-  top: 50%;
+  float: left;
   transform: translateX(-50%) translateY(-50%);
   border-radius: 3px;
 }
