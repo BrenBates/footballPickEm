@@ -51,8 +51,9 @@ loadUserGames();
       var newUserAwayTeamBody = $("<h6>");
       var newUserWeekBody = $("<h6>");
       var userSelectBtn = $("<button>");
-      userSelectBtn.addClass("select btn btn-default");
-      userSelectBtn.attr('userGamesId',userGames.userGameId);
+      userSelectBtn.addClass("select btn btn-danger");
+      userSelectBtn.attr('userGamesId', userGames.userGameId);
+      // userSelectBtn.attr('userfirstQsScore', userGames.firstQsHome);
       newUserGameCardHeading.text("Week: " + userGames.week);
       newUserHomeTeamBody.text(userGames.homeTeam + ": " + userGames.finalScoreHome);
       newUserBodyVs.text("vs.");
@@ -81,11 +82,11 @@ loadUserGames();
     let handleUserGame = function() {
 
       let userGameId = $(this).attr("userGamesId");
-      console.log('WTF IS this is the user games Id', userGameId);
-      var number = firstQsHome;
-      var lastdigit = number.toString().split('').pop();
-      console.log("Last Digit: " + lastdigit);
       
+      // console.log('WTF IS this is the user games Id', userGameId);
+      // var lastdigit = number.toString().split('').pop();
+      // console.log("Last Digit: " + lastdigit);
+      // getLastDigitScore();
 
       $.post("/api/refresh/" + userGameId );
       window.location.href = "/usergames/" + userGameId
@@ -94,12 +95,12 @@ loadUserGames();
 
     $(document).on("click", ".select", handleUserGame);
 
-    function getLastDigitScore() {
-      var number = userGames.firstQsHome;
-      var lastdigit = number.toString().split('').pop();
-      console.log(lastdigit);
-      return lastdigit;
-    }
+    // function getLastDigitScore(userGames) {
+    //   var number = userGames.firstQsHome;
+    //   var lastdigit = number.toString().split('').pop();
+    //   console.log("This is the last digit: " + lastdigit);
+    //   // return lastdigit;
+    // }
 
  
 });

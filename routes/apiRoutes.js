@@ -9,6 +9,10 @@ module.exports = function(app) {
     });
   });
 
+  // app.get("/api/winner", function(req, res) {
+  //   let num = req.query.userGameId.
+  // })
+
    // Get all usergame examples
    app.get("/api/usergames", function(req, res) {
      
@@ -121,11 +125,11 @@ module.exports = function(app) {
   });
 
   app.post("/api/refresh", function(req, res) {
-    // console.log(req);
+   
     let nflID = req.body.nflID
     console.log("nfl game id for axios call: " + nflID);
     let queryUrl = "http://www.nfl.com/liveupdate/game-center/" + nflID + "/" + nflID + "_gtd.json";
-    console.log(queryUrl);
+    // console.log(queryUrl);
     axios
       .get(queryUrl)
         .then(function(response) {

@@ -4,7 +4,7 @@
         <div class="col-md-12">
         <a class="btn btn-primary float-right" href="/">Home</a>
         <a class="btn btn-primary float-right" href="/viewgames">View Your Current Games</a>
-        <a class="btn btn-primary float-right" href="/viewteams">View Current Matchups</a>
+        <a class="btn btn-primary float-right" href="/viewteams">View Matchups</a>
         </div>
     </div>
 </div> 
@@ -51,11 +51,7 @@
     </tr>
   </table>
   <br>
-  {{!-- <div class="clearfix">
-    <P class="currentGameData_time">{{ug.currentQtr}} QTR {{ug.clock}}</P>
-    <P class="currentGameData_posTeam">{{ug.posTeam}} Ball on {{currentYrdLine}}</P>
-    <p class="currentGameData_down">{{ug.down}} DOWN and {{us.yrdsTogo}}</p>
-  </div> --}}
+ 
 </div>
  {{!-- <form class="clearfix mb-4" action="POST">
           <div class="form-group">
@@ -72,9 +68,9 @@
 <form>
 
 <div class="clearfix">
-<button id="refresh" datauserid={{ug.userId}} datausergameid={{ug.userGameId}} datanflgameid={{ug.nflGameId}} class="btn btn-primary float-right">Save</button>
+<button id="refresh" datauserid={{ug.userId}} datausergameid={{ug.userGameId}} datanflgameid={{ug.nflGameId}} class="btn btn-danger float-right">Save</button>
 &nbsp;
-<button id="update" datauserid={{ug.userId}} datausergameid={{ug.userGameId}} datanflgameid={{ug.nflGameId}} class="btn btn-primary float-right">Update Scores</button>
+<button id="update" datauserid={{ug.userId}} datausergameid={{ug.userGameId}} datanflgameid={{ug.nflGameId}} class="btn btn-danger float-right">Update Scores</button>
 </div>  
 <br>
 
