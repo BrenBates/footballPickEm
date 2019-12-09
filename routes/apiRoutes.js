@@ -133,7 +133,7 @@ module.exports = function(app) {
     axios
       .get(queryUrl)
         .then(function(response) {
-          // console.log(response.data[nflID].home.score);
+          // console.log(response.data[nflID].home.score.T);
 
           let refreshObj = {
             firstQsHome: response.data[nflID].home.score[1],
@@ -161,7 +161,7 @@ module.exports = function(app) {
           }).then(function(dbRefresh) {
             res.json(dbRefresh)
           })
-        })
+        }) 
   })
 
   app.post("/api/usergames", function(req,res) {
