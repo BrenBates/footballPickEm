@@ -19,6 +19,10 @@ body {
 background-size: cover;
 }
 
+.img-container {
+  text-align: center;
+}
+
 .indeximage {
   width: 690px;
 }
@@ -29,6 +33,8 @@ h1 {
 
 .card {
   display: inline-block !important;
+  box-sizing: border-box;
+  /* width: 210px; */
   margin: 8px !important;
 }
 
