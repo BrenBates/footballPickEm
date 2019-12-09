@@ -160,32 +160,64 @@ $(document).ready(function () {
   //     </div>
   //   </div>
   // </div>
+    // Function to construct a post's HTML
+    function createNewRow(games) {
+      var newGameCard = $("<div>");
+      newGameCard.addClass("card");
+      var newGameCardHeading = $("<div>");
+      newGameCardHeading.addClass("card-header");
+      var newGameCardBody = $("<div>");
+      newGameCardBody.addClass("card-body");
+      var newHomeTeamBody = $("<h5>");
+      var newAwayTeamBody = $("<h7>");
+      // var newGameDate = $("<h6>");
+      // var newGameTime = $("<h6>");
+      var selectBtn = $("<button>");
+      selectBtn.addClass("select btn btn-danger");
+      selectBtn.attr('nflGameId',games.gameId);
+      selectBtn.attr('data-toggle','modal');
+      selectBtn.attr('data-target','#modalGameCreated');
+      newGameCardHeading.text(games.gameId);
+      newHomeTeamBody.text(games.homeTeam);
+      newAwayTeamBody.text(games.awayTeam);
+      // newGameDate.text(games.gameDate);
+      // newGameTime.text(game.gameTime);
+      selectBtn.text("Select");
+      newGameCardBody.append(newGameCardHeading);
+      newGameCardBody.append(newAwayTeamBody);
+      newGameCardBody.append(newHomeTeamBody);
+      // newGameCardBody.append(newGameDate + " " + newGameTime);
+      newGameCardBody.append(selectBtn);
+      newGameCard.append(newGameCardBody);
+      newGameCard.data("games", games);
+      return newGameCard;
+    }
 
   // Function to construct a post's HTML
-  function createNewRow(games) {
-    let newColumn = $('<div>').addClass('col');
-    let newButton = $('<div>').addClass('button');
-    let firstColumn = $('<div>').addClass('col');
-    // let secondColumn = $('<div>').addClass('col');
-    let thirdColumn = $('<div>').addClass('col');
-    let awayImage = $('<img>').attr('id', 'teamlogo');
-    let homeImage = $('<img>').attr('id', 'teamlogo');
-    awayImage.attr('src', whichTeamImage(games.awayTeam));
-    awayImage.attr('alt', games.awayTeam);
-    homeImage.attr('src', whichTeamImage(games.homeTeam));
-    homeImage.attr('alt', games.homeTeam);
-    firstColumn.append(awayImage);
-    // secondColumn.append("AT");
-    thirdColumn.append(homeImage);
-    newButton.append(firstColumn);
-    newButton.append("AT");
-    // newButton.append(secondColumn);
-    newButton.append(thirdColumn);
-    newColumn.append(newButton);
+  // function createNewRow(games) {
+  //   let newColumn = $('<div>').addClass('col');
+  //   let newButton = $('<div>').addClass('button');
+  //   let firstColumn = $('<div>').addClass('col');
+  //   // let secondColumn = $('<div>').addClass('col');
+  //   let thirdColumn = $('<div>').addClass('col');
+  //   let awayImage = $('<img>').attr('id', 'teamlogo');
+  //   let homeImage = $('<img>').attr('id', 'teamlogo');
+  //   awayImage.attr('src', whichTeamImage(games.awayTeam));
+  //   awayImage.attr('alt', games.awayTeam);
+  //   homeImage.attr('src', whichTeamImage(games.homeTeam));
+  //   homeImage.attr('alt', games.homeTeam);
+  //   firstColumn.append(awayImage);
+  //   // secondColumn.append("AT");
+  //   thirdColumn.append(homeImage);
+  //   newButton.append(firstColumn);
+  //   newButton.append("AT");
+  //   // newButton.append(secondColumn);
+  //   newButton.append(thirdColumn);
+  //   newColumn.append(newButton);
     
-    console.log(newColumn);
-    return newColumn;
-  }
+  //   console.log(newColumn);
+  //   return newColumn;
+  // }
 
   function renderEmpty() {
     var messageH2 = $("<div>");

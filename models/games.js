@@ -8,6 +8,12 @@ module.exports = function(sequelize, DataTypes) {
     gameId: {
       type: DataTypes.INTEGER
     },
+    gameDate: {
+      type: DataTypes.STRING
+    },
+    gameTime: {
+      type: DataTypes.STRING
+    },
     week: {
       type: DataTypes.INTEGER
     },

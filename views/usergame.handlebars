@@ -1,32 +1,59 @@
-<a href="/">← Back To Home</a>
- 
-
-<table style="width:100%">
-  <tr>
-    <th>Teams</th>
-    <th>Q1</th> 
-    <th>Q2</th>
-    <th>Q3</th>
-    <th>Q4</th>
-  </tr>
-  <tr>
-    <td>{{ug.homeTeam}}</td>
-    <td>{{ug.firstQsHome}}</td>
-    <td>{{ug.secondQsHome}}</td>
-    <td>{{ug.thirdQsHome}} </td>
-    <td>{{ug.forthQsHome}}</td>
-  </tr>
-  <tr>
-    <td>{{ug.awayTeam}}</td>
-    <td>{{ug.firstQsAway}}</td>
-    <td>{{ug.secondQsAway}}</td>
-    <td>{{ug.thirdQsAway}}</td>
-    <td>{{ug.forthQsAway}}</td>
-  </tr>
-</table>
+{{!-- <a href="/">← Back To Home</a> --}}
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-md-12">
+      <a class="btn btn-primary float-right" href="/">Home</a>
+      <a class="btn btn-primary float-right" href="/viewgames">View Your Current Games</a>
+      <a class="btn btn-primary float-right" href="/viewteams">View Matchups</a>
+    </div>
+  </div>
+</div>
 <br>
 
- {{!-- <form class="clearfix mb-4" action="POST">
+<div class="container">
+  <table style="width:100%">
+    <tr>
+      <th>Teams</th>
+      <th>Q1</th>
+      <th>Q2</th>
+      <th>Q3</th>
+      <th>Q4</th>
+      <th>Final</th>
+    </tr>
+    <tr>
+      <td>{{ug.homeTeam}}</td>
+      <td>{{ug.firstQsHome}}</td>
+      <td>{{ug.secondQsHome}}</td>
+      <td>{{ug.thirdQsHome}} </td>
+      <td>{{ug.forthQsHome}}</td>
+      <td>{{us.finalScoreHome}}</td>
+    </tr>
+    <tr>
+      <td>{{ug.awayTeam}}</td>
+      <td>{{ug.firstQsAway}}</td>
+      <td>{{ug.secondQsAway}}</td>
+      <td>{{ug.thirdQsAway}}</td>
+      <td>{{ug.forthQsAway}}</td>
+      <td>{{us.finalScoreAway}}</td>
+    </tr>
+  </table>
+</div>
+<br>
+<div class="container">
+  <table style="width:75%">
+    <tr>
+      <td>{{ug.homeTeam}} {{ug.finalScoreHome}}</td>
+      <td>{{ug.awayTeam}} {{ug.finalScoreAway}}</td>
+      <td>{{ug.currentQTR}} {{ug.clock}}</td>
+      <td>{{ug.positionTeam}} Ball on the {{ug.currentYrdLine}}</td>
+      <td>{{ug.down}} DOWN and {{ug.yrdsTogo}}</td>
+
+    </tr>
+  </table>
+  <br>
+
+</div>
+{{!-- <form class="clearfix mb-4" action="POST">
           <div class="form-group">
             <label for="example-text">Example Text</label>
             <input type="text" id="example-text" class="form-control" aria-describedby="example-text" placeholder="Enter Example Text">
@@ -40,353 +67,360 @@
 
 <form>
 
-<div class="clearfix">
-<button id="refresh" datauserid={{ug.userId}} datausergameid={{ug.userGameId}} datanflgameid={{ug.nflGameId}} class="btn btn-primary float-right">Save</button>
-<button id="update" datauserid={{ug.userId}} datausergameid={{ug.userGameId}} datanflgameid={{ug.nflGameId}} class="btn btn-primary float-right">Update Scores</button>
-</div>  
-<br>
+  <div class="clearfix">
+    <button id="refresh" datauserid={{ug.userId}} datausergameid={{ug.userGameId}} datanflgameid={{ug.nflGameId}}
+      class="btn btn-danger float-right">Save</button>
+    &nbsp;
+    <button id="update" datauserid={{ug.userId}} datausergameid={{ug.userGameId}} datanflgameid={{ug.nflGameId}}
+      class="btn btn-danger float-right">Update Scores</button>
+  </div>
+  <br>
 
-<div class="grid">
-  <div class="module"></div>
-  <div class="module">{{ug.one}}</div>
-  <div class="module">{{ug.two}}</div>
-  <div class="module">{{ug.three}}</div>
-  <div class="module">{{ug.four}}</div>
-  <div class="module">{{ug.five}}</div>
-  <div class="module">{{ug.six}}</div>
-  <div class="module">{{ug.seven}}</div>
-  <div class="module">{{ug.eight}}</div>
-  <div class="module">{{ug.nine}}</div>
-  <div class="module">{{ug.ten}}</div>
-  
-  <div class="module">{{ug.a}}</div>
-  <div class="module">
-    <input type="text" id="A1" class="form-control" aria-describedby="example-text" placeholder={{ugi.A1}}>
+  <div class="grid">
+    <div class="module"></div>
+    <div class="module">{{ug.one}}</div>
+    <div class="module">{{ug.two}}</div>
+    <div class="module">{{ug.three}}</div>
+    <div class="module">{{ug.four}}</div>
+    <div class="module">{{ug.five}}</div>
+    <div class="module">{{ug.six}}</div>
+    <div class="module">{{ug.seven}}</div>
+    <div class="module">{{ug.eight}}</div>
+    <div class="module">{{ug.nine}}</div>
+    <div class="module">{{ug.ten}}</div>
+
+    <div class="module">{{ug.a}}</div>
+    <div class="module">
+      <input type="text" id="A1" class="form-control" aria-describedby="example-text" placeholder={{ugi.A1}}>
+    </div>
+    <div class="module">
+      <input type="text" id="A2" class="form-control" aria-describedby="example-text" placeholder={{ugi.A2}}>
+    </div>
+    <div class="module">
+      <input type="text" id="A3" class="form-control" aria-describedby="example-text" placeholder={{ugi.A3}}>
+    </div>
+    <div class="module">
+      <input type="text" id="A4" class="form-control" aria-describedby="example-text" placeholder={{ugi.A4}}>
+    </div>
+    <div class="module">
+      <input type="text" id="A5" class="form-control" aria-describedby="example-text" placeholder={{ugi.A5}}>
+    </div>
+    <div class="module">
+      <input type="text" id="A6" class="form-control" aria-describedby="example-text" placeholder={{ugi.A6}}>
+    </div>
+    <div class="module">
+      <input type="text" id="A7" class="form-control" aria-describedby="example-text" placeholder={{ugi.A7}}>
+    </div>
+    <div class="module">
+      <input type="text" id="A8" class="form-control" aria-describedby="example-text" placeholder={{ugi.A8}}>
+    </div>
+    <div class="module">
+      <input type="text" id="A9" class="form-control" aria-describedby="example-text" placeholder={{ugi.A9}}>
+    </div>
+    <div class="module">
+      <input type="text" id="A10" class="form-control" aria-describedby="example-text" placeholder={{ugi.A10}}>
+    </div>
+    <div class="module">{{ug.b}}</div>
+    <div class="module">
+      <input type="text" id="B1" class="form-control" aria-describedby="example-text" placeholder={{ugi.B1}}>
+    </div>
+    <div class="module">
+      <input type="text" id="B2" class="form-control" aria-describedby="example-text" placeholder={{ugi.B2}}>
+    </div>
+    <div class="module">
+      <input type="text" id="B3" class="form-control" aria-describedby="example-text" placeholder={{ugi.B3}}>
+    </div>
+    <div class="module">
+      <input type="text" id="B4" class="form-control" aria-describedby="example-text" placeholder={{ugi.B4}}>
+    </div>
+    <div class="module">
+      <input type="text" id="B5" class="form-control" aria-describedby="example-text" placeholder={{ugi.B5}}>
+    </div>
+    <div class="module">
+      <input type="text" id="B6" class="form-control" aria-describedby="example-text" placeholder={{ugi.B6}}>
+    </div>
+    <div class="module">
+      <input type="text" id="B7" class="form-control" aria-describedby="example-text" placeholder={{ugi.B7}}>
+    </div>
+    <div class="module">
+      <input type="text" id="B8" class="form-control" aria-describedby="example-text" placeholder={{ugi.B8}}>
+    </div>
+    <div class="module">
+      <input type="text" id="B9" class="form-control" aria-describedby="example-text" placeholder={{ugi.B9}}>
+    </div>
+    <div class="module">
+      <input type="text" id="B10" class="form-control" aria-describedby="example-text" placeholder={{ugi.B10}}>
+    </div>
+    <div class="module">{{ug.c}}</div>
+    <div class="module">
+      <input type="text" id="C1" class="form-control" aria-describedby="example-text" placeholder={{ugi.C1}}>
+    </div>
+    <div class="module">
+      <input type="text" id="C2" class="form-control" aria-describedby="example-text" placeholder={{ugi.C2}}>
+    </div>
+    <div class="module">
+      <input type="text" id="C3" class="form-control" aria-describedby="example-text" placeholder={{ugi.C3}}>
+    </div>
+    <div class="module">
+      <input type="text" id="C4" class="form-control" aria-describedby="example-text" placeholder={{ugi.C4}}>
+    </div>
+    <div class="module">
+      <input type="text" id="C5" class="form-control" aria-describedby="example-text" placeholder={{ugi.C5}}>
+    </div>
+    <div class="module">
+      <input type="text" id="C6" class="form-control" aria-describedby="example-text" placeholder={{ugi.C6}}>
+    </div>
+    <div class="module">
+      <input type="text" id="C7" class="form-control" aria-describedby="example-text" placeholder={{ugi.C7}}>
+    </div>
+    <div class="module">
+      <input type="text" id="C8" class="form-control" aria-describedby="example-text" placeholder={{ugi.C8}}>
+    </div>
+    <div class="module">
+      <input type="text" id="C9" class="form-control" aria-describedby="example-text" placeholder={{ugi.C9}}>
+    </div>
+    <div class="module">
+      <input type="text" id="C10" class="form-control" aria-describedby="example-text" placeholder={{ugi.C10}}>
+    </div>
+    <div class="module">{{ug.d}}</div>
+    <div class="module">
+      <input type="text" id="D1" class="form-control" aria-describedby="example-text" placeholder={{ugi.D1}}>
+    </div>
+    <div class="module">
+      <input type="text" id="D2" class="form-control" aria-describedby="example-text" placeholder={{ugi.D2}}>
+    </div>
+    <div class="module">
+      <input type="text" id="D3" class="form-control" aria-describedby="example-text" placeholder={{ugi.D3}}>
+    </div>
+    <div class="module">
+      <input type="text" id="D4" class="form-control" aria-describedby="example-text" placeholder={{ugi.D4}}>
+    </div>
+    <div class="module">
+      <input type="text" id="D5" class="form-control" aria-describedby="example-text" placeholder={{ugi.D5}}>
+    </div>
+    <div class="module">
+      <input type="text" id="D6" class="form-control" aria-describedby="example-text" placeholder={{ugi.D6}}>
+    </div>
+    <div class="module">
+      <input type="text" id="D7" class="form-control" aria-describedby="example-text" placeholder={{ugi.D7}}>
+    </div>
+    <div class="module">
+      <input type="text" id="D8" class="form-control" aria-describedby="example-text" placeholder={{ugi.D8}}>
+    </div>
+    <div class="module">
+      <input type="text" id="D9" class="form-control" aria-describedby="example-text" placeholder={{ugi.D9}}>
+    </div>
+    <div class="module">
+      <input type="text" id="D10" class="form-control" aria-describedby="example-text" placeholder={{ugi.D10}}>
+    </div>
+    <div class="module">{{ug.e}}</div>
+    <div class="module">
+      <input type="text" id="E1" class="form-control" aria-describedby="example-text" placeholder={{ugi.E1}}>
+    </div>
+    <div class="module">
+      <input type="text" id="E2" class="form-control" aria-describedby="example-text" placeholder={{ugi.E2}}>
+    </div>
+    <div class="module">
+      <input type="text" id="E3" class="form-control" aria-describedby="example-text" placeholder={{ugi.E3}}>
+    </div>
+    <div class="module">
+      <input type="text" id="E4" class="form-control" aria-describedby="example-text" placeholder={{ugi.E4}}>
+    </div>
+    <div class="module">
+      <input type="text" id="E5" class="form-control" aria-describedby="example-text" placeholder={{ugi.E5}}>
+    </div>
+    <div class="module">
+      <input type="text" id="E6" class="form-control" aria-describedby="example-text" placeholder={{ugi.E6}}>
+    </div>
+    <div class="module">
+      <input type="text" id="E7" class="form-control" aria-describedby="example-text" placeholder={{ugi.E7}}>
+    </div>
+    <div class="module">
+      <input type="text" id="E8" class="form-control" aria-describedby="example-text" placeholder={{ugi.E8}}>
+    </div>
+    <div class="module">
+      <input type="text" id="E9" class="form-control" aria-describedby="example-text" placeholder={{ugi.E9}}>
+    </div>
+    <div class="module">
+      <input type="text" id="E10" class="form-control" aria-describedby="example-text" placeholder={{ugi.E10}}>
+    </div>
+    <div class="module">{{ug.f}}</div>
+    <div class="module">
+      <input type="text" id="F1" class="form-control" aria-describedby="example-text" placeholder={{ugi.F1}}>
+    </div>
+    <div class="module">
+      <input type="text" id="F2" class="form-control" aria-describedby="example-text" placeholder={{ugi.F2}}>
+    </div>
+    <div class="module">
+      <input type="text" id="F3" class="form-control" aria-describedby="example-text" placeholder={{ugi.F3}}>
+    </div>
+    <div class="module">
+      <input type="text" id="F4" class="form-control" aria-describedby="example-text" placeholder={{ugi.F4}}>
+    </div>
+    <div class="module">
+      <input type="text" id="F5" class="form-control" aria-describedby="example-text" placeholder={{ugi.F5}}>
+    </div>
+    <div class="module">
+      <input type="text" id="F6" class="form-control" aria-describedby="example-text" placeholder={{ugi.F6}}>
+    </div>
+    <div class="module">
+      <input type="text" id="F7" class="form-control" aria-describedby="example-text" placeholder={{ugi.F7}}>
+    </div>
+    <div class="module">
+      <input type="text" id="F8" class="form-control" aria-describedby="example-text" placeholder={{ugi.F8}}>
+    </div>
+    <div class="module">
+      <input type="text" id="F9" class="form-control" aria-describedby="example-text" placeholder={{ugi.F9}}>
+    </div>
+    <div class="module">
+      <input type="text" id="F10" class="form-control" aria-describedby="example-text" placeholder={{ugi.F10}}>
+    </div>
+    <div class="module">{{ug.g}}</div>
+    <div class="module">
+      <input type="text" id="G1" class="form-control" aria-describedby="example-text" placeholder={{ugi.G1}}>
+    </div>
+    <div class="module">
+      <input type="text" id="G2" class="form-control" aria-describedby="example-text" placeholder={{ugi.G2}}>
+    </div>
+    <div class="module">
+      <input type="text" id="G3" class="form-control" aria-describedby="example-text" placeholder={{ugi.G3}}>
+    </div>
+    <div class="module">
+      <input type="text" id="G4" class="form-control" aria-describedby="example-text" placeholder={{ugi.G4}}>
+    </div>
+    <div class="module">
+      <input type="text" id="G5" class="form-control" aria-describedby="example-text" placeholder={{ugi.G5}}>
+    </div>
+    <div class="module">
+      <input type="text" id="G6" class="form-control" aria-describedby="example-text" placeholder={{ugi.G6}}>
+    </div>
+    <div class="module">
+      <input type="text" id="G7" class="form-control" aria-describedby="example-text" placeholder={{ugi.G7}}>
+    </div>
+    <div class="module">
+      <input type="text" id="G8" class="form-control" aria-describedby="example-text" placeholder={{ugi.G8}}>
+    </div>
+    <div class="module">
+      <input type="text" id="G9" class="form-control" aria-describedby="example-text" placeholder={{ugi.G9}}>
+    </div>
+    <div class="module">
+      <input type="text" id="G10" class="form-control" aria-describedby="example-text" placeholder={{ugi.G10}}>
+    </div>
+    <div class="module">{{ug.h}}</div>
+    <div class="module">
+      <input type="text" id="H1" class="form-control" aria-describedby="example-text" placeholder={{ugi.H1}}>
+    </div>
+    <div class="module">
+      <input type="text" id="H2" class="form-control" aria-describedby="example-text" placeholder={{ugi.H2}}>
+    </div>
+    <div class="module">
+      <input type="text" id="H3" class="form-control" aria-describedby="example-text" placeholder={{ugi.H3}}>
+    </div>
+    <div class="module">
+      <input type="text" id="H4" class="form-control" aria-describedby="example-text" placeholder={{ugi.H4}}>
+    </div>
+    <div class="module">
+      <input type="text" id="H5" class="form-control" aria-describedby="example-text" placeholder={{ugi.H5}}>
+    </div>
+    <div class="module">
+      <input type="text" id="H6" class="form-control" aria-describedby="example-text" placeholder={{ugi.H6}}>
+    </div>
+    <div class="module">
+      <input type="text" id="H7" class="form-control" aria-describedby="example-text" placeholder={{ugi.H7}}>
+    </div>
+    <div class="module">
+      <input type="text" id="H8" class="form-control" aria-describedby="example-text" placeholder={{ugi.H8}}>
+    </div>
+    <div class="module">
+      <input type="text" id="H9" class="form-control" aria-describedby="example-text" placeholder={{ugi.H9}}>
+    </div>
+    <div class="module">
+      <input type="text" id="H10" class="form-control" aria-describedby="example-text" placeholder={{ugi.H10}}>
+    </div>
+    <div class="module">{{ug.i}}</div>
+    <div class="module">
+      <input type="text" id="I1" class="form-control" aria-describedby="example-text" placeholder={{ugi.I1}}>
+    </div>
+    <div class="module">
+      <input type="text" id="I2" class="form-control" aria-describedby="example-text" placeholder={{ugi.I2}}>
+    </div>
+    <div class="module">
+      <input type="text" id="I3" class="form-control" aria-describedby="example-text" placeholder={{ugi.I3}}>
+    </div>
+    <div class="module">
+      <input type="text" id="I4" class="form-control" aria-describedby="example-text" placeholder={{ugi.I4}}>
+    </div>
+    <div class="module">
+      <input type="text" id="I5" class="form-control" aria-describedby="example-text" placeholder={{ugi.I5}}>
+    </div>
+    <div class="module">
+      <input type="text" id="I6" class="form-control" aria-describedby="example-text" placeholder={{ugi.I6}}>
+    </div>
+    <div class="module">
+      <input type="text" id="I7" class="form-control" aria-describedby="example-text" placeholder={{ugi.I7}}>
+    </div>
+    <div class="module">
+      <input type="text" id="I8" class="form-control" aria-describedby="example-text" placeholder={{ugi.I8}}>
+    </div>
+    <div class="module">
+      <input type="text" id="I9" class="form-control" aria-describedby="example-text" placeholder={{ugi.I9}}>
+    </div>
+    <div class="module">
+      <input type="text" id="I10" class="form-control" aria-describedby="example-text" placeholder={{ugi.I10}}>
+    </div>
+    <div class="module">{{ug.j}}</div>
+    <div class="module">
+      <input type="text" id="J1" class="form-control" aria-describedby="example-text" placeholder={{ugi.J1}}>
+    </div>
+    <div class="module">
+      <input type="text" id="J2" class="form-control" aria-describedby="example-text" placeholder={{ugi.J2}}>
+    </div>
+    <div class="module">
+      <input type="text" id="J3" class="form-control" aria-describedby="example-text" placeholder={{ugi.J3}}>
+    </div>
+    <div class="module">
+      <input type="text" id="J4" class="form-control" aria-describedby="example-text" placeholder={{ugi.J4}}>
+    </div>
+    <div class="module">
+      <input type="text" id="J5" class="form-control" aria-describedby="example-text" placeholder={{ugi.J5}}>
+    </div>
+    <div class="module">
+      <input type="text" id="J6" class="form-control" aria-describedby="example-text" placeholder={{ugi.J6}}>
+    </div>
+    <div class="module">
+      <input type="text" id="J7" class="form-control" aria-describedby="example-text" placeholder={{ugi.J7}}>
+    </div>
+    <div class="module">
+      <input type="text" id="J8" class="form-control" aria-describedby="example-text" placeholder={{ugi.J8}}>
+    </div>
+    <div class="module">
+      <input type="text" id="J9" class="form-control" aria-describedby="example-text" placeholder={{ugi.J9}}>
+    </div>
+    <div class="module">
+      <input type="text" id="J10" class="form-control" aria-describedby="example-text" placeholder={{ugi.J10}}>
+    </div>
   </div>
-  <div class="module">
-    <input type="text" id="A2" class="form-control" aria-describedby="example-text" placeholder={{ugi.A2}}>
-  </div>
-  <div class="module">
-    <input type="text" id="A3" class="form-control" aria-describedby="example-text" placeholder={{ugi.A3}}>
-  </div>
-  <div class="module">
-    <input type="text" id="A4" class="form-control" aria-describedby="example-text" placeholder={{ugi.A4}}>
-  </div>
-  <div class="module">
-    <input type="text" id="A5" class="form-control" aria-describedby="example-text" placeholder={{ugi.A5}}>
-  </div>
-  <div class="module">
-    <input type="text" id="A6" class="form-control" aria-describedby="example-text" placeholder={{ugi.A6}}>
-  </div>
-  <div class="module">
-    <input type="text" id="A7" class="form-control" aria-describedby="example-text" placeholder={{ugi.A7}}>
-  </div>
-  <div class="module">
-    <input type="text" id="A8" class="form-control" aria-describedby="example-text" placeholder={{ugi.A8}}>
-  </div>
-  <div class="module">
-    <input type="text" id="A9" class="form-control" aria-describedby="example-text" placeholder={{ugi.A9}}>
-  </div>
-  <div class="module">
-    <input type="text" id="A10" class="form-control" aria-describedby="example-text" placeholder={{ugi.A10}}>
-  </div>
-  <div class="module">{{ug.b}}</div>
-  <div class="module">
-    <input type="text" id="B1" class="form-control" aria-describedby="example-text" placeholder={{ugi.B1}}>
-  </div>
-  <div class="module">
-    <input type="text" id="B2" class="form-control" aria-describedby="example-text" placeholder={{ugi.B2}}>
-  </div>
-  <div class="module">
-    <input type="text" id="B3" class="form-control" aria-describedby="example-text" placeholder={{ugi.B3}}>
-  </div>
-  <div class="module">
-    <input type="text" id="B4" class="form-control" aria-describedby="example-text" placeholder={{ugi.B4}}>
-  </div>
-  <div class="module">
-    <input type="text" id="B5" class="form-control" aria-describedby="example-text" placeholder={{ugi.B5}}>
-  </div>
-  <div class="module">
-    <input type="text" id="B6" class="form-control" aria-describedby="example-text" placeholder={{ugi.B6}}>
-  </div>
-  <div class="module">
-    <input type="text" id="B7" class="form-control" aria-describedby="example-text" placeholder={{ugi.B7}}>
-  </div>
-  <div class="module">
-    <input type="text" id="B8" class="form-control" aria-describedby="example-text" placeholder={{ugi.B8}}>
-  </div>
-  <div class="module">
-    <input type="text" id="B9" class="form-control" aria-describedby="example-text" placeholder={{ugi.B9}}>
-  </div>
-  <div class="module">
-    <input type="text" id="B10" class="form-control" aria-describedby="example-text" placeholder={{ugi.B10}}>
-  </div>
-  <div class="module">{{ug.c}}</div>
-  <div class="module">
-    <input type="text" id="C1" class="form-control" aria-describedby="example-text" placeholder={{ugi.C1}}>
-  </div>
-  <div class="module">
-    <input type="text" id="C2" class="form-control" aria-describedby="example-text" placeholder={{ugi.C2}}>
-  </div>
-  <div class="module">
-    <input type="text" id="C3" class="form-control" aria-describedby="example-text" placeholder={{ugi.C3}}>
-  </div>
-  <div class="module">
-    <input type="text" id="C4" class="form-control" aria-describedby="example-text" placeholder={{ugi.C4}}>
-  </div>
-  <div class="module">
-    <input type="text" id="C5" class="form-control" aria-describedby="example-text" placeholder={{ugi.C5}}>
-  </div>
-  <div class="module">
-    <input type="text" id="C6" class="form-control" aria-describedby="example-text" placeholder={{ugi.C6}}>
-  </div>
-  <div class="module">
-    <input type="text" id="C7" class="form-control" aria-describedby="example-text" placeholder={{ugi.C7}}>
-  </div>
-  <div class="module">
-    <input type="text" id="C8" class="form-control" aria-describedby="example-text" placeholder={{ugi.C8}}>
-  </div>
-  <div class="module">
-    <input type="text" id="C9" class="form-control" aria-describedby="example-text" placeholder={{ugi.C9}}>
-  </div>
-  <div class="module">
-    <input type="text" id="C10" class="form-control" aria-describedby="example-text" placeholder={{ugi.C10}}>
-  </div>
-  <div class="module">{{ug.d}}</div>
-  <div class="module">
-    <input type="text" id="D1" class="form-control" aria-describedby="example-text" placeholder={{ugi.D1}}>
-  </div>
-  <div class="module">
-    <input type="text" id="D2" class="form-control" aria-describedby="example-text" placeholder={{ugi.D2}}>
-  </div>
-  <div class="module">
-    <input type="text" id="D3" class="form-control" aria-describedby="example-text" placeholder={{ugi.D3}}>
-  </div>
-  <div class="module">
-    <input type="text" id="D4" class="form-control" aria-describedby="example-text" placeholder={{ugi.D4}}>
-  </div>
-  <div class="module">
-    <input type="text" id="D5" class="form-control" aria-describedby="example-text" placeholder={{ugi.D5}}>
-  </div>
-  <div class="module">
-    <input type="text" id="D6" class="form-control" aria-describedby="example-text" placeholder={{ugi.D6}}>
-  </div>
-  <div class="module">
-    <input type="text" id="D7" class="form-control" aria-describedby="example-text" placeholder={{ugi.D7}}>
-  </div>
-  <div class="module">
-    <input type="text" id="D8" class="form-control" aria-describedby="example-text" placeholder={{ugi.D8}}>
-  </div>
-  <div class="module">
-    <input type="text" id="D9" class="form-control" aria-describedby="example-text" placeholder={{ugi.D9}}>
-  </div>
-  <div class="module">
-    <input type="text" id="D10" class="form-control" aria-describedby="example-text" placeholder={{ugi.D10}}>
-  </div>
-  <div class="module">{{ug.e}}</div>
-  <div class="module">
-    <input type="text" id="E1" class="form-control" aria-describedby="example-text" placeholder={{ugi.E1}}>
-  </div>
-  <div class="module">
-    <input type="text" id="E2" class="form-control" aria-describedby="example-text" placeholder={{ugi.E2}}>
-  </div>
-  <div class="module">
-    <input type="text" id="E3" class="form-control" aria-describedby="example-text" placeholder={{ugi.E3}}>
-  </div>
-  <div class="module">
-    <input type="text" id="E4" class="form-control" aria-describedby="example-text" placeholder={{ugi.E4}}>
-  </div>
-  <div class="module">
-    <input type="text" id="E5" class="form-control" aria-describedby="example-text" placeholder={{ugi.E5}}>
-  </div>
-  <div class="module">
-    <input type="text" id="E6" class="form-control" aria-describedby="example-text" placeholder={{ugi.E6}}>
-  </div>
-  <div class="module">
-    <input type="text" id="E7" class="form-control" aria-describedby="example-text" placeholder={{ugi.E7}}>
-  </div>
-  <div class="module">
-    <input type="text" id="E8" class="form-control" aria-describedby="example-text" placeholder={{ugi.E8}}>
-  </div>
-  <div class="module">
-    <input type="text" id="E9" class="form-control" aria-describedby="example-text" placeholder={{ugi.E9}}>
-  </div>
-  <div class="module">
-    <input type="text" id="E10" class="form-control" aria-describedby="example-text" placeholder={{ugi.E10}}>
-  </div>
-  <div class="module">{{ug.f}}</div>
-  <div class="module">
-    <input type="text" id="F1" class="form-control" aria-describedby="example-text" placeholder={{ugi.F1}}>
-  </div>
-  <div class="module">
-    <input type="text" id="F2" class="form-control" aria-describedby="example-text" placeholder={{ugi.F2}}>
-  </div>
-  <div class="module">
-    <input type="text" id="F3" class="form-control" aria-describedby="example-text" placeholder={{ugi.F3}}>
-  </div>
-  <div class="module">
-    <input type="text" id="F4" class="form-control" aria-describedby="example-text" placeholder={{ugi.F4}}>
-  </div>
-  <div class="module">
-    <input type="text" id="F5" class="form-control" aria-describedby="example-text" placeholder={{ugi.F5}}>
-  </div>
-  <div class="module">
-    <input type="text" id="F6" class="form-control" aria-describedby="example-text" placeholder={{ugi.F6}}>
-  </div>
-  <div class="module">
-    <input type="text" id="F7" class="form-control" aria-describedby="example-text" placeholder={{ugi.F7}}>
-  </div>
-  <div class="module">
-    <input type="text" id="F8" class="form-control" aria-describedby="example-text" placeholder={{ugi.F8}}>
-  </div>
-  <div class="module">
-    <input type="text" id="F9" class="form-control" aria-describedby="example-text" placeholder={{ugi.F9}}>
-  </div>
-  <div class="module">
-    <input type="text" id="F10" class="form-control" aria-describedby="example-text" placeholder={{ugi.F10}}>
-  </div>
-  <div class="module">{{ug.g}}</div>
-  <div class="module">
-    <input type="text" id="G1" class="form-control" aria-describedby="example-text" placeholder={{ugi.G1}}>
-  </div>
-  <div class="module">
-    <input type="text" id="G2" class="form-control" aria-describedby="example-text" placeholder={{ugi.G2}}>
-  </div>
-  <div class="module">
-    <input type="text" id="G3" class="form-control" aria-describedby="example-text" placeholder={{ugi.G3}}>
-  </div>
-  <div class="module">
-    <input type="text" id="G4" class="form-control" aria-describedby="example-text" placeholder={{ugi.G4}}>
-  </div>
-  <div class="module">
-    <input type="text" id="G5" class="form-control" aria-describedby="example-text" placeholder={{ugi.G5}}>
-  </div>
-  <div class="module">
-    <input type="text" id="G6" class="form-control" aria-describedby="example-text" placeholder={{ugi.G6}}>
-  </div>
-  <div class="module">
-    <input type="text" id="G7" class="form-control" aria-describedby="example-text" placeholder={{ugi.G7}}>
-  </div>
-  <div class="module">
-    <input type="text" id="G8" class="form-control" aria-describedby="example-text" placeholder={{ugi.G8}}>
-  </div>
-  <div class="module">
-    <input type="text" id="G9" class="form-control" aria-describedby="example-text" placeholder={{ugi.G9}}>
-  </div>
-  <div class="module">
-    <input type="text" id="G10" class="form-control" aria-describedby="example-text" placeholder={{ugi.G10}}>
-  </div>
-  <div class="module">{{ug.h}}</div>
-  <div class="module">
-     <input type="text" id="H1" class="form-control" aria-describedby="example-text" placeholder={{ugi.H1}}>
-  </div>
-  <div class="module">
-     <input type="text" id="H2" class="form-control" aria-describedby="example-text" placeholder={{ugi.H2}}>
-  </div>
-  <div class="module">
-     <input type="text" id="H3" class="form-control" aria-describedby="example-text" placeholder={{ugi.H3}}>
-  </div>
-  <div class="module">
-     <input type="text" id="H4" class="form-control" aria-describedby="example-text" placeholder={{ugi.H4}}>
-  </div>
-  <div class="module">
-     <input type="text" id="H5" class="form-control" aria-describedby="example-text" placeholder={{ugi.H5}}>
-  </div>
-  <div class="module">
-     <input type="text" id="H6" class="form-control" aria-describedby="example-text" placeholder={{ugi.H6}}>
-  </div>
-  <div class="module">
-     <input type="text" id="H7" class="form-control" aria-describedby="example-text" placeholder={{ugi.H7}}>
-  </div>
-  <div class="module">
-     <input type="text" id="H8" class="form-control" aria-describedby="example-text" placeholder={{ugi.H8}}>
-  </div>
-  <div class="module">
-     <input type="text" id="H9" class="form-control" aria-describedby="example-text" placeholder={{ugi.H9}}>
-  </div>
-  <div class="module">
-     <input type="text" id="H10" class="form-control" aria-describedby="example-text" placeholder={{ugi.H10}}>
-  </div>
-  <div class="module">{{ug.i}}</div>
-  <div class="module">
-    <input type="text" id="I1" class="form-control" aria-describedby="example-text" placeholder={{ugi.I1}}>
-  </div>
-   <div class="module">
-    <input type="text" id="I2" class="form-control" aria-describedby="example-text" placeholder={{ugi.I2}}>
-  </div>
-   <div class="module">
-    <input type="text" id="I3" class="form-control" aria-describedby="example-text" placeholder={{ugi.I3}}>
-  </div>
-   <div class="module">
-    <input type="text" id="I4" class="form-control" aria-describedby="example-text" placeholder={{ugi.I4}}>
-  </div>
-   <div class="module">
-    <input type="text" id="I5" class="form-control" aria-describedby="example-text" placeholder={{ugi.I5}}>
-  </div>
-   <div class="module">
-    <input type="text" id="I6" class="form-control" aria-describedby="example-text" placeholder={{ugi.I6}}>
-  </div>
-   <div class="module">
-    <input type="text" id="I7" class="form-control" aria-describedby="example-text" placeholder={{ugi.I7}}>
-  </div>
-   <div class="module">
-    <input type="text" id="I8" class="form-control" aria-describedby="example-text" placeholder={{ugi.I8}}>
-  </div>
-   <div class="module">
-    <input type="text" id="I9" class="form-control" aria-describedby="example-text" placeholder={{ugi.I9}}>
-  </div>
-   <div class="module">
-    <input type="text" id="I10" class="form-control" aria-describedby="example-text" placeholder={{ugi.I10}}>
-  </div>
-  <div class="module">{{ug.j}}</div>
-  <div class="module">
-    <input type="text" id="J1" class="form-control" aria-describedby="example-text" placeholder={{ugi.J1}}>
-  </div>
-  <div class="module">
-    <input type="text" id="J2" class="form-control" aria-describedby="example-text" placeholder={{ugi.J2}}>
-  </div>
-  <div class="module">
-    <input type="text" id="J3" class="form-control" aria-describedby="example-text" placeholder={{ugi.J3}}>
-  </div>
-  <div class="module">
-    <input type="text" id="J4" class="form-control" aria-describedby="example-text" placeholder={{ugi.J4}}>
-  </div>
-  <div class="module">
-    <input type="text" id="J5" class="form-control" aria-describedby="example-text" placeholder={{ugi.J5}}>
-  </div>
-  <div class="module">
-    <input type="text" id="J6" class="form-control" aria-describedby="example-text" placeholder={{ugi.J6}}>
-  </div>
-  <div class="module">
-    <input type="text" id="J7" class="form-control" aria-describedby="example-text" placeholder={{ugi.J7}}>
-  </div>
-  <div class="module">
-    <input type="text" id="J8" class="form-control" aria-describedby="example-text" placeholder={{ugi.J8}}>
-  </div>
-  <div class="module">
-    <input type="text" id="J9" class="form-control" aria-describedby="example-text" placeholder={{ugi.J9}}>
-  </div>
-  <div class="module">
-    <input type="text" id="J10" class="form-control" aria-describedby="example-text" placeholder={{ugi.J10}}>
-  </div>
-</div>
 </form>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-$(document).on("click", "#update", function() {
-  event.preventDefault();
-  console.log('update button has been pushed');
-  let nflgameID = {
-   nflID: $(this).attr("datanflgameid")
+  function reloadPage() {
+    location.reload(true);
   }
-  console.log(nflgameID);
-  $.post("/api/refresh", nflgameID);
-})
- $(document).on("click", "#refresh", function() {
+  $(document).on("click", "#update", function () {
     event.preventDefault();
-    console.log('hello world')
+    console.log('update button has been pushed');
+    let nflgameID = {
+      nflID: $(this).attr("datanflgameid")
+    }
+    console.log(nflgameID);
+    $.post("/api/refresh", nflgameID);
+    location.reload(true);
+  })
+  $(document).on("click", "#refresh", function () {
+    event.preventDefault();
+    console.log('Save Button Clicked: usergameinstance table entry created')
     let instanceData = {
       userGameId: $(this).attr("datausergameid"),
       userId: $(this).attr("datauserid"),

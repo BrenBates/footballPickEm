@@ -25,9 +25,9 @@ module.exports = function(app) {
 
    app.get("/usergames/:usergameid", function(req,res) {
     let userGameId = req.params.usergameid
-    console.log("=======================================================================")
-    console.log("this is the user game id: ")
-    console.log(userGameId);
+    // console.log("=======================================================================")
+    // console.log("this is the user game id: ")
+    // console.log(userGameId);
     db.usergames.findOne({
       where: {
         userGameId: req.params.usergameid

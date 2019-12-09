@@ -8,6 +8,10 @@ module.exports = function(app) {
       res.json(dbGames);
     });
   });
+
+  // app.get("/api/winner", function(req, res) {
+  //   let num = req.query.userGameId.
+  // })
    // Get all usergame examples
    app.get("/api/usergames", function(req, res) {
     let userId = req.query.userId;
@@ -30,16 +34,19 @@ module.exports = function(app) {
   //   }).then(function(dbUGI) {
   app.post("/api/games", function(req, res) {
     var queryUrl = "https://feeds.nfl.com/feeds-rs/scores.json";
+    console.log("API URL: " + queryUrl);
     axios
       .get(queryUrl)
       .then(function(response) {
-        console.log(response);
+        console.log(response.data);
         for (let i = 0; i < response.data.gameScores.length; i++) {
           let currentWeek = response.data.week;
           console.log(currentWeek);
           if(response.data.gameScores[i].score === null){
             var tempObj = {
               gameId: response.data.gameScores[i].gameSchedule.gameId,
+              gameDate: response.data.gameScores[i].gameSchedule.gameDate,
+              gameTime: response.data.gameScores[i].gameSchedule.gameTimeLocal,
               week: response.data.week,
               homeTeam: response.data.gameScores[i].gameSchedule.homeTeam.fullName,
               firstQsHome: null,
@@ -59,6 +66,8 @@ module.exports = function(app) {
           var tempObj = {
             gameId: response.data.gameScores[i].gameSchedule.gameId,
             week: response.data.week,
+            gameDate: response.data.gameScores[i].gameSchedule.gameDate,
+            gameTime: response.data.gameScores[i].gameSchedule.gameTimeLocal,
             homeTeam: response.data.gameScores[i].gameSchedule.homeTeam.fullName,
             firstQsHome: response.data.gameScores[i].score.homeTeamScore.pointQ1,
             secondQsHome: response.data.gameScores[i].score.homeTeamScore.pointQ2,
@@ -107,16 +116,18 @@ module.exports = function(app) {
         res.status(500);
       });
   });
+
   app.post("/api/refresh", function(req, res) {
-    console.log(req);
+   
     let nflID = req.body.nflID
     console.log("nfl game id for axios call: " + nflID);
     let queryUrl = "http://www.nfl.com/liveupdate/game-center/" + nflID + "/" + nflID + "_gtd.json";
-    console.log(queryUrl);
+    // console.log(queryUrl);
     axios
       .get(queryUrl)
         .then(function(response) {
-          console.log(response.data[nflID].home.score);
+          // console.log(response.data[nflID].home.score);
+
           let refreshObj = {
             firstQsHome: response.data[nflID].home.score[1],
             secondQsHome: response.data[nflID].home.score[2],
@@ -127,9 +138,14 @@ module.exports = function(app) {
             secondQsAway: response.data[nflID].away.score[2],
             thirdQsAway: response.data[nflID].away.score[3],
             forthQsAway: response.data[nflID].away.score[4],
-            finalScoreAway: response.data[nflID].away.score.T
+            finalScoreAway: response.data[nflID].away.score.T,
+            clock: response.data[nflID].clock,
+            currentQtr: response.data[nflID].qtr,
+            down: response.data[nflID].down,
+            yrdsTogo: response.data[nflID].togo,
+            positionTeam: response.data[nflID].posteam,
+            currentYrdLine: response.data[nflID].yl
           }
-          console.log(refreshObj);
           db.usergames.update(refreshObj, {
             where: {
               nflGameId: req.body.nflID
@@ -173,10 +189,16 @@ module.exports = function(app) {
       let userSecondQsHome = dbGames.dataValues.secondQsHome;
       let userThirdQsHome = dbGames.dataValues.thirdQsHome;
       let userForthQsHome = dbGames.dataValues.forthQsHome;
+      let userFinalScoreHome = dbGames.dataValues.finalScoreHome;
       let userFirstQsAway = dbGames.dataValues.firstQsAway;
       let userSecondQsAway = dbGames.dataValues.secondQsAway;
       let userThirdQsAway = dbGames.dataValues.thirdQsAway;
       let userForthQsAway = dbGames.dataValues.forthQsAway;
+      let userFinalScoreAway = dbGames.dataValues.finaLScoreAway;
+
+      console.log("User final score home:" + userFinalScoreHome);
+      console.log("User final score: " + userFinalScoreAway);
+    
     var userGameObj = {
     userId: userId,
     nflGameId: nflGameId,
@@ -187,10 +209,12 @@ module.exports = function(app) {
     secondQsHome: userSecondQsHome,
     thirdQsHome: userThirdQsHome,
     forthQsHome: userForthQsHome,
+    finalScoreHome: userFinalScoreHome,
     firstQsAway: userFirstQsAway,
     secondQsAway: userSecondQsAway,
     thirdQsAway: userThirdQsAway,
     forthQsAway: userForthQsAway,
+    // finalScoreAway: userFinalScoreAway,
     a: randomColumn[0],
     b: randomColumn[1],
     c: randomColumn[2],
