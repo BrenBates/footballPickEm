@@ -194,28 +194,23 @@ $(document).ready(function () {
   // }
 
   function createNewRow(games) {
-    let newColumn = $('<div>').addClass('col');
+    let newCard = $('<div>').addClass('card');
     let newButton = $('<div>').addClass('button');
-    let firstColumn = $('<div>').addClass('col');
-    // let secondColumn = $('<div>').addClass('col');
-    let thirdColumn = $('<div>').addClass('col');
     let awayImage = $('<img>').attr('id', 'teamlogo');
     let homeImage = $('<img>').attr('id', 'teamlogo');
+    let newP = $('<p>');
     awayImage.attr('src', whichTeamImage(games.awayTeam));
     awayImage.attr('alt', games.awayTeam);
     homeImage.attr('src', whichTeamImage(games.homeTeam));
     homeImage.attr('alt', games.homeTeam);
-    firstColumn.append(awayImage);
-    // secondColumn.append("AT");
-    thirdColumn.append(homeImage);
-    newButton.append(firstColumn);
-    newButton.append("AT");
-    // newButton.append(secondColumn);
-    newButton.append(thirdColumn);
-    newColumn.append(newButton);
+    newP.text('AT');
+    newButton.append(awayImage);
+    newButton.append(newP);
+    newButton.append(homeImage);
+    newCard.append(newButton);
 
-    console.log(newColumn);
-    return newColumn;
+    console.log(newCard);
+    return newCard;
   }
 
   function renderEmpty() {
