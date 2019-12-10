@@ -26,3 +26,9 @@ NFL Game Data:
 This app allows you to create pick em forms for NFL games so that you can bet on the games with your friends.  Typically these forms are printed out and passed around at parties or gatherings, people buy a certain number of squares and put their name on the sheet.  
 
 This app has user authentication allowing a new user to sign up.   They then can click on View This Weeks Games to see all of the NFL matchups for the week.  This data is pulled from the NFL apis listed above.   They can then click on a game which saves it in their user games.  Then they can click View Your Games and then select into that game.  After that the form shows up.  They can then input names into each of the cells and click a button to save this data for future use.
+
+## Project presentation slides:
+
+Google Slides: https://docs.google.com/presentation/d/1SvWemIAWIRDnifAGaSY_YCe023D0SMpBczxvTwKJmCk/edit?usp=sharing
+
+.PNG imagess of slides: files for each slide can also be found in /public/images/NFL Pick 'Em_presentation_1-10

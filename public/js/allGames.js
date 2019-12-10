@@ -47,7 +47,7 @@ initializeRow();
       var newGameCardBody = $("<div>");
       newGameCardBody.addClass("card-body");
       var newHomeTeamBody = $("<h5>");
-      var newAwayTeamBody = $("<h7>");
+      var newAwayTeamBody = $("<h5>");
       // var newGameDate = $("<h6>");
       // var newGameTime = $("<h6>");
       var selectBtn = $("<button>");
